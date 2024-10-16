@@ -17,9 +17,9 @@ Scary Game #1 is a 3D horror game developed in Unity, featuring a machine-learni
 - ML-Agents
 - Python
 
-## Requiremeents
+## Requirements
 - Unity 6 or Higher
-- Windows or Mac OS
+- Windows or macOS
 
 ## How to Play
 - Use (W A S D) to move and mouse to look around.
