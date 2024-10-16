@@ -31,7 +31,7 @@ public class AntagonistController : MonoBehaviour
             {
                 // Direction and Force
                 Vector3 direction = (target.position - transform.position).normalized;
-                rb.AddForce(direction * speed);
+                rb.AddForce(direction * speed * Time.deltaTime * 400);
 
                 // Clamp velocity so antagonist doesn't bounce back and forth
                 rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxVelocity);
