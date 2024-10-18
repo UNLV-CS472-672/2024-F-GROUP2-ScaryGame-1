@@ -1,10 +1,12 @@
 using UnityEngine;
+using System;
 
 public class Movement : MonoBehaviour
 {
     private const float GRAVITY = 9.8f;
     private const float SPEED = 1.5f;
-    private const float JUMPFORCE = 3f;
+    private const float SPRINTSPEED = 2.5f;
+    private const float JUMPFORCE = 3.5f;
     private const float PITCH_SENS = 1.5f;
     private const float YAW_SENS = 2.5f;
 
@@ -13,6 +15,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private CharacterController PlayerCharacterController;
 
     float jump_height = 0f;
+    float cur_speed = SPEED, target_speed = 0f;
     float pitch_degrees = 0f, yaw_degrees = 0f;
 
 
@@ -37,7 +40,8 @@ public class Movement : MonoBehaviour
 
         if (PlayerCharacterController.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            //Handle player jumping
+            if (Input.GetKey(KeyCode.Space))
             {
                 jump_height = JUMPFORCE;
             }
@@ -45,14 +49,40 @@ public class Movement : MonoBehaviour
             {
                 jump_height = -0.1f;
             }
+
+            //Handle player sprinting
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                target_speed = SPRINTSPEED;
+            }
+            else
+            {
+                target_speed = SPEED;
+            }
         }
+
         else
         {
             jump_height += GRAVITY * -2f * Time.deltaTime;
         }
+
+        //Modify the current speed value if the target speed is much different (player is or is not sprinting)
+        if (Math.Abs(cur_speed - target_speed) > 0.05)
+        {
+            if (cur_speed < target_speed)
+            {
+                //Acceleration
+                cur_speed += (1f * Time.deltaTime);
+            }
+            else
+            {
+                //Deceleration (More Rapid)
+                cur_speed -= (1.5f * Time.deltaTime);
+            }
+        }
         
         vec3_move.y += jump_height;
-        PlayerCharacterController.Move(vec3_move * SPEED * Time.deltaTime);
+        PlayerCharacterController.Move(vec3_move * cur_speed * Time.deltaTime);
     }
     private void CameraRotate()
     {
