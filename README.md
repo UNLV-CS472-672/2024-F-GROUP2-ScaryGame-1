@@ -23,5 +23,7 @@ Scary Game #1 is a 3D horror game developed in Unity, featuring a machine-learni
 
 ## How to Play
 - Use (W A S D) to move and mouse to look around.
+- Hold Shift to sprint.
+- Press Space to jump.
 - Avoid the antagonist while navigating the map.
 - Interact with objects to unlock new areas and progress through the game.
