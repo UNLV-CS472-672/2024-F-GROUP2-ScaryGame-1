@@ -11,8 +11,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+      - uses: actions/cache@v3
+        with:
+          path: ./sg1/Library
+          key: Library-sg1-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            Library-sg1-${{ runner.os }}-
+            Library-
       - name: Run Unity Test Runner
+        id: unit-tests
         uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -21,3 +28,11 @@ jobs:
         with:
           projectPath: ./sg1
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Coverage results
+          path: ${{ steps.unit-tests.outputs.coveragePath }}
+
+
+
