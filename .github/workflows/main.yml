@@ -28,6 +28,7 @@ jobs:
         with:
           projectPath: ./sg1
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          coverageOptions: 'generateHtmlReport;generateBadgeReport;assemblyFilters:+GameLogic'
       - uses: actions/upload-artifact@v3
         if: always()
         with:
