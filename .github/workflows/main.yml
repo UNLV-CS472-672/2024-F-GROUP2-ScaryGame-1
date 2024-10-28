@@ -29,6 +29,10 @@ jobs:
           projectPath: ./sg1
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           coverageOptions: 'generateHtmlReport;generateBadgeReport;assemblyFilters:+GameLogic'
+      - name: Line Coverage
+        run: |
+          cat ${{ steps.unit-tests.outputs.coveragePath }}/Report/Summary.json
+          jq '.summary.linecoverage' ${{ steps.unit-tests.outputs.coveragePath }}/Report/Summary.json
       - uses: actions/upload-artifact@v3
         if: always()
         with:
