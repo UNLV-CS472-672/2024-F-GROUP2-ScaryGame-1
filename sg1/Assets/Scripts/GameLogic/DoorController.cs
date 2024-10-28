@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
     public IAnimator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
         animator = new AnimatorWrapper(GetComponentInChildren<Animator>());
     }
@@ -21,12 +21,12 @@ public class DoorController : MonoBehaviour
     bool inClosedState() {
         return animator.CompareAnimatorStateName("closed");
     }
-    bool inOpeningState() {
-        return animator.CompareAnimatorStateName("opening");
-    }
-    bool inClosingState() {
-        return animator.CompareAnimatorStateName("closing");
-    }
+    //bool inOpeningState() {
+    //    return animator.CompareAnimatorStateName("opening");
+    //}
+    //bool inClosingState() {
+    //    return animator.CompareAnimatorStateName("closing");
+    //}
 
     // Opens the door if it is currently closed or closes the door if it is currently open.
     // This function does nothing if called during an animation. 

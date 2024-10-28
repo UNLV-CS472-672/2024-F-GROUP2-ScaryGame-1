@@ -41,14 +41,52 @@ public class DoorControllerTest
         Assert.That(wantClosed, Is.False);
     }
 
+    [Test]
     public void toggleDoor_Change()
     {
-        currentStateName = "closed";
+        currentStateName = "open";
         wantClosed = false;
 
         doorController.toggleDoor();
 
+        Assert.That(wantClosed, Is.True);
+    }
+
+    [Test]
+    public void openDoor_CurrentlyClosed()
+    {
+        currentStateName = "closed";
+        wantClosed = true;
+
+        doorController.openDoor();
+
         Assert.That(wantClosed, Is.False);
+    }
+
+    [Test]
+    public void openDoor_CurrentlyOpen()
+    {
+        currentStateName = "open";
+        wantClosed = false;
+
+        doorController.openDoor();
+
+        Assert.That(wantClosed, Is.False);
+    }
+
+    [Test]
+    public void Start_FindsComponent()
+    {
+        GameObject testedObject = new GameObject();
+        testedObject.AddComponent<DoorController>();
+        DoorController testedController = testedObject.GetComponent<DoorController>();
+        testedObject.AddComponent<Animator>();
+
+        testedController.Start();
+
+        Assert.That(testedController.animator, Is.Not.Null);
+
+        Object.DestroyImmediate(testedObject);
     }
 
     [TearDown]

@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # Mac's automatically create these files
 .DS_Store
+
+# Don't track coverage reports
+/CodeCoverage/
