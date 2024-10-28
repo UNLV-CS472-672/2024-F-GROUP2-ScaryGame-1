@@ -4,7 +4,7 @@ public class DoorController : MonoBehaviour
 {
 
     // The Animator component manages the door opening and closing animations.
-    private IAnimator animator;
+    public IAnimator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

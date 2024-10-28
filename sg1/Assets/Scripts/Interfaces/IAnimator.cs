@@ -13,7 +13,7 @@ public class AnimatorWrapper : IAnimator
     Animator animator;
 
     public AnimatorWrapper(Animator animator)
-    {
+    { 
         this.animator = animator;
     }
     public bool CompareAnimatorStateName(string stateName)
