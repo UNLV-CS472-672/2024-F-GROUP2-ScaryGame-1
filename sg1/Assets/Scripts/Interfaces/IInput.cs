@@ -1,14 +1,8 @@
 using UnityEngine;
 
+// Interface for Input
 public interface IInput
 {
     bool GetMouseButtonDown(int button);
-}
-
-public class InputWrapper : IInput
-{
-    public bool GetMouseButtonDown(int button)
-    {
-        return Input.GetMouseButtonDown(button);
-    }
+    // We can add more methods as needed for testing
 }

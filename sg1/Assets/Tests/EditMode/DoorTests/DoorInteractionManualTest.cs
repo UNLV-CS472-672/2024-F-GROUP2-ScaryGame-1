@@ -6,43 +6,41 @@ using UnityEngine.TestTools;
 
 public class DoorInteractionManualTest
 {
-    private DoorController doorController;
-    private GameObject gameObject;
-    private GameObject controllingObject;
+    // GameObject taking role of door
+    private GameObject doorGameObject;
     private BoxCollider boxCollider;
+    private DoorController doorController;
+
+    // GameObject taking role of Player
+    private GameObject controllingObject;
     private DoorInteractionManual doorInteractor;
-    private string currentStateName;
-    private bool wantClosed;
-    private bool mouseDown;
+
+    private MockDoorAnimator mockDoorAnimator; // Simulates Animator Controller
+    private bool mouseDown; // Used to simulate mouse presses
+
 
     [SetUp]
     public void SetUpDoorController()
     {
-        gameObject = new GameObject();
-        gameObject.AddComponent<DoorController>();
-        gameObject.AddComponent<BoxCollider>();
-        doorController = gameObject.GetComponent<DoorController>();
-        boxCollider = gameObject.GetComponent<BoxCollider>();
-        gameObject.tag = "Door";
+        // Set up fake door
+        doorGameObject = new GameObject();
+        doorGameObject.AddComponent<DoorController>();
+        doorGameObject.AddComponent<BoxCollider>();
+        doorController = doorGameObject.GetComponent<DoorController>();
+        boxCollider = doorGameObject.GetComponent<BoxCollider>();
+        doorGameObject.tag = "Door";
 
-        currentStateName = "closed";
-        wantClosed = true;
+        // Add reference to mock animator
+        mockDoorAnimator = new MockDoorAnimator(true, "closed");
+        doorController.animator = mockDoorAnimator.Object;
 
-        var mockAnimator = new Mock<IAnimator>();
-        mockAnimator.Setup(m => m.CompareAnimatorStateName(It.IsAny<string>()))
-            .Returns((string s) => s == currentStateName);
-        mockAnimator.Setup(m => m.SetBool("isClosed", It.IsAny<bool>()))
-            .Callback((string s, bool b) => wantClosed = b);
-        mockAnimator.Setup(m => m.GetBool("isClosed")).Returns(() => wantClosed);
-
-        doorController.animator = mockAnimator.Object;
-
+        // Set up fake player
         controllingObject = new GameObject();
         controllingObject.AddComponent<DoorInteractionManual>();
         doorInteractor = controllingObject.GetComponent<DoorInteractionManual>();
-
         doorInteractor.doorController = doorController;
 
+        // Set up mock user input
         mouseDown = false;
         var mockInput = new Mock<IInput>();
         mockInput.Setup(m => m.GetMouseButtonDown(0)).Returns(() => mouseDown);
@@ -52,13 +50,15 @@ public class DoorInteractionManualTest
     [Test]
     public void Update_NoDoorStaysClosed()
     {
+        // Remove reference to door controller
         doorInteractor.doorController = null;
-        currentStateName = "closed";
-        wantClosed = true;
+        mockDoorAnimator.currentStateName = "closed";
+        mockDoorAnimator.isClosed = true;
 
         doorInteractor.Update();
 
-        Assert.That(wantClosed, Is.True);
+        // Ensure that state did not change
+        Assert.That(mockDoorAnimator.isClosed, Is.True);
 
         doorInteractor.doorController = doorController;
     }
@@ -66,20 +66,27 @@ public class DoorInteractionManualTest
     [Test]
     public void Update_DoorCloses()
     {
-        currentStateName = "open";
-        wantClosed = false;
+        // Door is open and mouse is down
         mouseDown = true;
+        mockDoorAnimator.currentStateName = "open";
+        mockDoorAnimator.isClosed = false;
 
         doorInteractor.Update();
 
-        Assert.That(wantClosed, Is.True);
+        // Player should close door
+        Assert.That(mockDoorAnimator.isClosed, Is.True);
     }
 
     [Test]
     public void OnTriggerEnter_FindsDoor()
     {
+        // Remove Door reference
         doorInteractor.doorController = null;
+     
+        // Collide
         doorInteractor.OnTriggerEnter(boxCollider);
+        
+        // Door reference should be added
         Assert.That(doorInteractor.doorController, Is.Not.Null);
 
         doorInteractor.doorController = doorController;
@@ -88,8 +95,13 @@ public class DoorInteractionManualTest
     [Test]
     public void OnTriggerExit_RemovesDoor()
     {
+        // Add door reference
+        doorInteractor.doorController = doorController;
+
+        // Leave trigger
         doorInteractor.OnTriggerExit(boxCollider);
 
+        // Door reference should be gone
         Assert.That(doorInteractor.doorController, Is.Null);
 
         doorInteractor.doorController = doorController;
@@ -98,11 +110,15 @@ public class DoorInteractionManualTest
     [Test]
     public void Start_AddsInputWrapper()
     {
+        // Set up new game object
         GameObject testObject = new GameObject();
         testObject.AddComponent<DoorInteractionManual>();
         DoorInteractionManual testDoorInteractor = testObject.GetComponent<DoorInteractionManual>();
+
+        // Call start
         testDoorInteractor.Start();
 
+        // Input reference should have been created
         Assert.That(testDoorInteractor.input, Is.Not.Null);
     }
 
@@ -111,7 +127,7 @@ public class DoorInteractionManualTest
     [TearDown]
     public void TearDownDoorController()
     {
-        Object.DestroyImmediate(gameObject);
+        Object.DestroyImmediate(doorGameObject);
         Object.DestroyImmediate(controllingObject);
 
     }

@@ -6,53 +6,52 @@ using UnityEngine.TestTools;
 
 public class DoorInteractionAutomaticTest
 {
-    private DoorController doorController;
-    private GameObject gameObject;
-    private GameObject controllingObject;
+    // GameObject taking role of door
+    private GameObject doorGameObject;
     private BoxCollider boxCollider;
+    private DoorController doorController;
+
+    // GameObject taking role of Antagonist
+    private GameObject controllingObject;
     private DoorInteractionAutomatic doorInteractor;
-    private string currentStateName;
-    private bool wantClosed;
+
+    private MockDoorAnimator mockDoorAnimator; // Simulates animator controller
+
 
     [SetUp]
     public void SetUpDoorController()
     {
-        gameObject = new GameObject();
-        gameObject.AddComponent<DoorController>();
-        gameObject.AddComponent<BoxCollider>();
-        doorController = gameObject.GetComponent<DoorController>();
-        boxCollider = gameObject.GetComponent<BoxCollider>();
-        gameObject.tag = "Door";
+        // Set up fake door
+        doorGameObject = new GameObject();
+        doorGameObject.AddComponent<DoorController>();
+        doorGameObject.AddComponent<BoxCollider>();
+        doorController = doorGameObject.GetComponent<DoorController>();
+        boxCollider = doorGameObject.GetComponent<BoxCollider>();
+        doorGameObject.tag = "Door";
 
-        currentStateName = "closed";
-        wantClosed = true;
+        // Add reference to animator
+        mockDoorAnimator = new MockDoorAnimator(true, "closed");
+        doorController.animator = mockDoorAnimator.Object;
 
-        var mockAnimator = new Mock<IAnimator>();
-        mockAnimator.Setup(m => m.CompareAnimatorStateName(It.IsAny<string>()))
-            .Returns((string s) => s == currentStateName);
-        mockAnimator.Setup(m => m.SetBool("isClosed", It.IsAny<bool>()))
-            .Callback((string s, bool b) => wantClosed = b);
-        mockAnimator.Setup(m => m.GetBool("isClosed")).Returns(() => wantClosed);
-
-        doorController.animator = mockAnimator.Object;
-
+        // Set up fake antagonist
         controllingObject = new GameObject();
         controllingObject.AddComponent<DoorInteractionAutomatic>();
         doorInteractor = controllingObject.GetComponent<DoorInteractionAutomatic>();
-
         doorInteractor.doorController = doorController;
     }
 
     [Test]
     public void Update_NoDoorStaysClosed()
     {
+        // Remove reference to door controller
         doorInteractor.doorController = null;
-        currentStateName = "closed";
-        wantClosed = true;
+        mockDoorAnimator.currentStateName = "closed";
+        mockDoorAnimator.isClosed = true;
 
         doorInteractor.Update();
 
-        Assert.That(wantClosed, Is.True);
+        // Ensure that state did not change
+        Assert.That(mockDoorAnimator.isClosed, Is.True);
 
         doorInteractor.doorController = doorController;
     }
@@ -60,19 +59,25 @@ public class DoorInteractionAutomaticTest
     [Test]
     public void Update_DoorOpens()
     {
-        currentStateName = "closed";
-        wantClosed = true;
+        // Door is closed
+        mockDoorAnimator.currentStateName = "closed";
+        mockDoorAnimator.isClosed = true;
 
         doorInteractor.Update();
 
-        Assert.That(wantClosed, Is.False);
+        // Update should open it
+        Assert.That(mockDoorAnimator.isClosed, Is.False);
     }
 
     [Test]
     public void OnTriggerEnter_FindsDoor()
     {
+        // Remove Door reference
         doorInteractor.doorController = null;
+
         doorInteractor.OnTriggerEnter(boxCollider);
+
+        // Door reference should be added
         Assert.That(doorInteractor.doorController, Is.Not.Null);
 
         doorInteractor.doorController = doorController;
@@ -81,8 +86,10 @@ public class DoorInteractionAutomaticTest
     [Test]
     public void OnTriggerExit_RemovesDoor()
     {
+        // Leave trigger
         doorInteractor.OnTriggerExit(boxCollider);
 
+        // Door reference should be gone
         Assert.That(doorInteractor.doorController, Is.Null);
 
         doorInteractor.doorController = doorController;
@@ -93,7 +100,7 @@ public class DoorInteractionAutomaticTest
     [TearDown]
     public void TearDownDoorController()
     {
-        Object.DestroyImmediate(gameObject);
+        Object.DestroyImmediate(doorGameObject);
         Object.DestroyImmediate(controllingObject);
 
     }

@@ -14,10 +14,12 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./sg1/Library
+          # ai-gen start (GPT-4o mini, 0)
           key: Library-sg1-${{ runner.os }}-${{ github.sha }}
           restore-keys: |
             Library-sg1-${{ runner.os }}-
             Library-
+          # ai-gen end
       - name: Run Unity Test Runner
         id: unit-tests
         uses: game-ci/unity-test-runner@v4
@@ -31,7 +33,6 @@ jobs:
           coverageOptions: 'generateHtmlReport;generateBadgeReport;assemblyFilters:+GameLogic'
       - name: Line Coverage
         run: |
-          cat ${{ steps.unit-tests.outputs.coveragePath }}/Report/Summary.json
           jq '.summary.linecoverage' ${{ steps.unit-tests.outputs.coveragePath }}/Report/Summary.json
       - uses: actions/upload-artifact@v3
         if: always()
