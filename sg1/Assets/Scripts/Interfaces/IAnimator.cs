@@ -1,5 +1,4 @@
 using UnityEngine;
-using static Codice.Client.Common.WebApi.WebApiEndpoints;
 
 public interface IAnimator
 {
