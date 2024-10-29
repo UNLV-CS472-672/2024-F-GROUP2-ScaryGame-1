@@ -1,0 +1,44 @@
+name: Unity Test Runner
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - uses: actions/cache@v3
+        with:
+          path: ./sg1/Library
+          # ai-gen start (GPT-4o mini, 0)
+          key: Library-sg1-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            Library-sg1-${{ runner.os }}-
+            Library-
+          # ai-gen end
+      - name: Run Unity Test Runner
+        id: unit-tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ./sg1
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          coverageOptions: 'generateHtmlReport;generateBadgeReport;assemblyFilters:+GameLogic'
+      - name: Line Coverage
+        run: |
+          jq '.summary.linecoverage' ${{ steps.unit-tests.outputs.coveragePath }}/Report/Summary.json
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Coverage results
+          path: ${{ steps.unit-tests.outputs.coveragePath }}
+
+
+
