@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class DoorInteractionManual : MonoBehaviour
 {
-    private DoorController doorController = null;
+    public DoorController doorController = null;
+    public IInput input = null;
+
+
+    public void Start()
+    {
+        input = new InputWrapper();
+    }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         // doorController will only be non-null if the player is in range of a door
         // a (left) mouse click will toggle the door state if it isn't currenlty animating.
-        if(doorController != null && Input.GetMouseButtonDown(0)) {
+        if(doorController != null && input.GetMouseButtonDown(0)) {
             doorController.toggleDoor();
         }
     }

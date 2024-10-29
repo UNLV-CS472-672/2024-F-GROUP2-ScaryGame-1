@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class DoorInteractionAutomatic : MonoBehaviour
 {
-    private DoorController doorController = null;
+    public DoorController doorController = null;
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         // if in range of a doorController, continuously try to open the door
         // there is effectively a cooldown with the animation, so the player 
@@ -25,7 +25,6 @@ public class DoorInteractionAutomatic : MonoBehaviour
     public void OnTriggerExit(Collider collider) {
         // remove the player's reference to the doorController when it leaves the collider.
         if(collider.CompareTag("Door")) {
-            Debug.Log("trigger enter: door");
             doorController = null;
         }
     }
