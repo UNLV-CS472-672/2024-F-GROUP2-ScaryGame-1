@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        InventoryManagement inventoryManager = FindObjectOfType<InventoryManagement>();
+        InventoryManagement inventoryManager = FindAnyObjectByType<InventoryManagement>();
         if (inventoryManager != null)
         {
             inventoryManager.AddItemToHotBar(item); // Add the item to the inventory

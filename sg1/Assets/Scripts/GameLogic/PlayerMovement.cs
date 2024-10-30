@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour
     private const float SPEED = 1.5f;
     private const float SPRINTSPEED = 2.5f;
     private const float JUMPFORCE = 3.5f;
-    private const float PITCH_SENS = 1.5f;
-    private const float YAW_SENS = 2.5f;
+    public float PITCH_SENS = 1.5f;
+    public float YAW_SENS = 1.5f;
 
     //These fields will be visible in the Unity Editor, for selection from the user
     [SerializeField] private Transform PlayerCamera;
@@ -22,6 +22,10 @@ public class Movement : MonoBehaviour
     //Called when player is initialized
     void Start()
     {
+        // Load sensitivity settings
+        PITCH_SENS = PlayerPrefs.GetFloat("PitchSensitivity", PITCH_SENS);
+        YAW_SENS = PlayerPrefs.GetFloat("YawSensitivity", YAW_SENS);
+
         //Disable cursor
         Cursor.lockState = CursorLockMode.Locked; 
     }
