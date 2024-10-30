@@ -53,6 +53,14 @@ public class OptionsMenuTitle : MonoBehaviour
         UpdateApplyButtonState();
     }
 
+    public void Initialize()
+    {
+        InitializeSensitivitySettings();
+        AddButtonListeners();
+        HideAllPanels();
+        UpdateApplyButtonState();
+    }
+
     void InitializeSensitivitySettings()
     {
         // Load sensitivity settings from PlayerPrefs or use default values
@@ -186,6 +194,13 @@ public class OptionsMenuTitle : MonoBehaviour
 
         // Indicate that the changes have been applied.
         changesApplied = true;
+
+        // Notify the Movement script to update sensitivity settings
+        var playerMovement = FindObjectOfType<Movement>();
+        if (playerMovement != null)
+        {
+            playerMovement.UpdateSensitivitySettings();
+        }
     }
 
     void SetSensitivityToDefault()
