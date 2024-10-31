@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     private float last_jump_time = 0;
     private float cur_speed = SPEED, target_speed = 0f;
     private float pitch_degrees = 0f, yaw_degrees = 0f;
+
+    static public bool LockMovement = false;
     
     public float PITCH_SENS = 1.5f;
     public float YAW_SENS = 1.5f;
@@ -34,8 +36,11 @@ public class Movement : MonoBehaviour
     //Called once per frame
     void Update()
     {
-        PlayerMove();
-        CameraRotate();
+        if (LockMovement == false)
+        {
+            PlayerMove();
+            CameraRotate();
+        }
     }
 
     public void UpdateSensitivitySettings()
