@@ -1,8 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FloorSaltLogic : MonoBehaviour
 {
-    private const float DISSIPATE_TIME = 5f;
+    private const float DISSIPATE_TIME = 20f;
+    static public List<GameObject> saltInstances = new List<GameObject>();
     private float time_since_thrown = 0f;
     private float opacity = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,11 +22,13 @@ public class FloorSaltLogic : MonoBehaviour
             if (time_since_thrown == 0f)
             {
                 time_since_thrown = Time.realtimeSinceStartup;
+                saltInstances.Add(this.gameObject);
             }
 
             // after DISSIPATE_TIME seconds, destroy the object
             if ((Time.realtimeSinceStartup - time_since_thrown) > DISSIPATE_TIME)
             {
+                saltInstances.Remove(this.gameObject);
                 Destroy(this.gameObject);
             }
 

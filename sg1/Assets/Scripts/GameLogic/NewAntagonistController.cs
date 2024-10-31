@@ -4,6 +4,11 @@ using UnityEngine.AI;
 public class NewAntagonistController : MonoBehaviour
 {
     public Transform playerTransform;
+
+    private const float SALTDANGERRADIUS = 2f;
+
+    private NavMeshAgent thisAgent = null;
+
     // Uses the NavMesh system. 
     // The NavMesh surface is on the Map Core prefab
     NavMeshAgent agent;
@@ -29,11 +34,23 @@ public class NewAntagonistController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.destination = playerTransform.position;
         pathFindingState = PathFindingState.Patrolling;
+        thisAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (IsInSaltRadius() == true)
+        {
+            thisAgent.speed = 0.08f;
+        }
+        else
+        {
+            thisAgent.speed = 2f;
+        }
+        
+
         if (PathFindingState.Patrolling == pathFindingState)
         {
             // Start chasing when the player is spotted
@@ -84,6 +101,18 @@ public class NewAntagonistController : MonoBehaviour
                 refindTimer = 0;
             }
         }
+    }
+
+    bool IsInSaltRadius()
+    {
+        foreach (var salt_pile in FloorSaltLogic.saltInstances)
+        {
+            if (Vector3.Distance(this.gameObject.transform.position, salt_pile.transform.position) <= SALTDANGERRADIUS)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     // This is not a real line of sight check, just checks if there is a short enough unobstructed path.
