@@ -25,8 +25,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         // Load sensitivity settings
-        PITCH_SENS = PlayerPrefs.GetFloat("PitchSensitivity", PITCH_SENS);
-        YAW_SENS = PlayerPrefs.GetFloat("YawSensitivity", YAW_SENS);
+        UpdateSensitivitySettings();
 
         //Disable cursor
         Cursor.lockState = CursorLockMode.Locked; 
@@ -38,7 +37,13 @@ public class Movement : MonoBehaviour
         PlayerMove();
         CameraRotate();
     }
-    //Handles movement of the player object within a 3-Dimensional space
+
+    public void UpdateSensitivitySettings()
+    {
+        PITCH_SENS = PlayerPrefs.GetFloat("PitchSensitivity", PITCH_SENS);
+        YAW_SENS = PlayerPrefs.GetFloat("YawSensitivity", YAW_SENS);
+    }
+
     private void PlayerMove()
     {
         Vector3 vec3_move = transform.TransformDirection(
