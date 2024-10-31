@@ -4032,8 +4032,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 228538912}
+  m_Children: []
   m_Father: {fileID: 1638509688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4212,6 +4211,33 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1227420139320969725, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
   m_PrefabInstance: {fileID: 5595262569447216431}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1537430779
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606659160}
+  serializedVersion: 4
+  m_Mass: 0.001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1552000732
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,7 +4670,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1236820644}
   - {fileID: 1513787452}
   - {fileID: 69746084}
   - {fileID: 1446117715}
@@ -4924,10 +4949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsCanvas: {fileID: 595442841}
-  mainPanel: {fileID: 193048166}
-  sensitivityPanel: {fileID: 2076775700}
+  mainPanel: {fileID: 0}
+  sensitivityPanel: {fileID: 0}
   sensitivityButton: {fileID: 592369890}
-  backButtonMainPanel: {fileID: 207949868}
+  backButtonMainPanel: {fileID: 0}
   backButtonSensitivityPanel: {fileID: 1879266285}
   sensitivityXSlider: {fileID: 1651279762}
   sensitivityYSlider: {fileID: 384579662}
@@ -5865,7 +5890,10 @@ PrefabInstance:
     - {fileID: 5378228035190566814, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3570673063139267787, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1537430779}
   m_SourcePrefab: {fileID: 100100000, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -5884,3 +5912,4 @@ SceneRoots:
   - {fileID: 975899745}
   - {fileID: 268039056}
   - {fileID: 2020544722}
+  - {fileID: 1698602807}
