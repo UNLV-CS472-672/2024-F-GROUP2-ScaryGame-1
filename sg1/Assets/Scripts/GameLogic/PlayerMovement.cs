@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     public float PITCH_SENS = 1.5f;
     public float YAW_SENS = 1.5f;
 
+    public bool canLookAround = true;
+    private Quaternion targetRotation;
+
     //These fields will be visible in the Unity Editor, for selection from the user
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private CharacterController PlayerCharacterController;
@@ -24,6 +27,13 @@ public class Movement : MonoBehaviour
     {
         // Load sensitivity settings
         UpdateSensitivitySettings();
+
+        ////////////////////// Initialize camera rotation
+        Vector3 initialEuler = PlayerCamera.transform.localRotation.eulerAngles;
+        pitch_degrees = initialEuler.x;
+        yaw_degrees = initialEuler.y;
+        targetRotation = Quaternion.Euler(pitch_degrees, yaw_degrees, 0f);
+        /////////////////////
 
         //Disable cursor
         Cursor.lockState = CursorLockMode.Locked; 
@@ -44,6 +54,7 @@ public class Movement : MonoBehaviour
 
     private void PlayerMove()
     {
+
         Vector3 vec3_move = transform.TransformDirection(
             Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
@@ -94,13 +105,22 @@ public class Movement : MonoBehaviour
         vec3_move.y += jump_height;
         PlayerCharacterController.Move(vec3_move * cur_speed * Time.deltaTime);
     }
+
     private void CameraRotate()
     {
-        pitch_degrees -= Input.GetAxis("Mouse Y") * PITCH_SENS;
-        yaw_degrees += Input.GetAxis("Mouse X") * YAW_SENS;
+        if (canLookAround)
+        {
+            pitch_degrees -= Input.GetAxis("Mouse Y") * PITCH_SENS;
+            yaw_degrees += Input.GetAxis("Mouse X") * YAW_SENS;
 
-        pitch_degrees = Mathf.Clamp(pitch_degrees, -70f, 70f);
+            pitch_degrees = Mathf.Clamp(pitch_degrees, -70f, 70f);
 
-        PlayerCamera.transform.localRotation = Quaternion.Euler(pitch_degrees, yaw_degrees, 0f);
+            targetRotation = Quaternion.Euler(pitch_degrees, yaw_degrees, 0f);
+        }
+
+        // Always apply the latest target rotation, which only updates if canLookAround is true
+        PlayerCamera.transform.localRotation = targetRotation;
     }
+
+
 }
