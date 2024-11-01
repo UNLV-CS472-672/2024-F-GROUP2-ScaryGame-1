@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
 
-public class PressTheButtonMinigame : MonoBehaviour
+public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
 {
     public Button[] buttons; // Array of UI Buttons in the mini-game
     public GameObject miniGameCanvas; // Reference to the mini-game Canvas or parent GameObject to deactivate
@@ -79,6 +79,7 @@ public class PressTheButtonMinigame : MonoBehaviour
             {
                 Debug.Log("Correct sequence completed!");
                 isGameCompleted = true;
+                CompleteMiniGame();
                 CloseMiniGame();
                 miniGameCanvas.SetActive(false);
             }
@@ -110,5 +111,10 @@ public class PressTheButtonMinigame : MonoBehaviour
 
         miniGameCanvas.SetActive(true);
         StartCoroutine(FlashSequence());
+    }
+
+    public void CompleteMiniGame()
+    {
+        MinigameManager.instance.MiniGameCompleted();
     }
 }
