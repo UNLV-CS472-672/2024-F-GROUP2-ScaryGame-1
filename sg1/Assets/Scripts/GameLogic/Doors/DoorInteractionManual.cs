@@ -23,7 +23,6 @@ public class DoorInteractionManual : MonoBehaviour
     public void OnTriggerEnter(Collider collider) {
         // There is a trigger collider around the door
         if(collider.CompareTag("Door")) {
-            Debug.Log("trigger enter: door");
             // if the player collides with this, set it's current doorController to 
             // the one matching the collider
             doorController = collider.GetComponentInParent<DoorController>();
