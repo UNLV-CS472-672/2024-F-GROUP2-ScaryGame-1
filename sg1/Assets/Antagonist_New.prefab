@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4562430189504437845}
   - component: {fileID: 7578187506594350004}
   m_Layer: 0
-  m_Name: Antagonist
+  m_Name: Antagonist_New
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
