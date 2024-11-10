@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
+    public bool empty = true;
+
     public Image icon;
 
     private InventoryItem currentItem;
@@ -13,6 +15,7 @@ public class InventorySlot : MonoBehaviour
         currentItem = newItem;
         icon.sprite = newItem.icon;
         icon.enabled = true;
+        empty = false;
     }
 
     // Clearing Current Slot
@@ -21,5 +24,11 @@ public class InventorySlot : MonoBehaviour
         currentItem = null;
         icon.sprite = null;
         icon.enabled = false;
+        empty = true;
+    }
+
+    public InventoryItem getItem()
+    {
+        return currentItem;
     }
 }

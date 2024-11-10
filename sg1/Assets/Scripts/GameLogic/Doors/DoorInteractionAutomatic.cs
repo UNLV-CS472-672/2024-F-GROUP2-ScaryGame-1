@@ -14,7 +14,7 @@ public class DoorInteractionAutomatic : MonoBehaviour
             doorController.openDoor();
         }        
     }
-
+    
     public void OnTriggerEnter(Collider collider) {
         // give the player a reference to the doorController when it enters the trigger.
         if(collider.CompareTag("Door")) {
@@ -24,7 +24,7 @@ public class DoorInteractionAutomatic : MonoBehaviour
 
     public void OnTriggerExit(Collider collider) {
         // remove the player's reference to the doorController when it leaves the collider.
-        if(collider.CompareTag("Door")) {
+        if (collider.CompareTag("Door")) {
             doorController = null;
         }
     }
