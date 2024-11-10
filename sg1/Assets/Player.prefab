@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7983923745769611523}
   - component: {fileID: 4689956920841164957}
   - component: {fileID: 2061272376780462503}
-  - component: {fileID: 5378228035190566814}
   - component: {fileID: 7109422869684424125}
   - component: {fileID: 1227420139320969725}
   - component: {fileID: 4933560537930507131}
@@ -94,33 +93,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5378228035190566814
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570673063139267787}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &7109422869684424125
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -180,7 +152,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -286,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PITCH_SENS: 1.5
   YAW_SENS: 2.5
+  canLookAround: 1
   PlayerCamera: {fileID: 7983923745769611523}
   PlayerCharacterController: {fileID: 590713874040520505}
 --- !u!114 &7939238632856961546
