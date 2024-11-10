@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4401880582717342955}
   - component: {fileID: 590713874040520505}
   - component: {fileID: 825168620957131300}
+  - component: {fileID: 7939238632856961546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -287,3 +288,16 @@ MonoBehaviour:
   YAW_SENS: 2.5
   PlayerCamera: {fileID: 7983923745769611523}
   PlayerCharacterController: {fileID: 590713874040520505}
+--- !u!114 &7939238632856961546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570673063139267787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9cd90c5254c445d921a28824a13d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorController: {fileID: 0}

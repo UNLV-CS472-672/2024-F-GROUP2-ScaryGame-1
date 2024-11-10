@@ -28,7 +28,11 @@ public class Interactable : MonoBehaviour
         InventoryManagement inventoryManager = FindAnyObjectByType<InventoryManagement>();
         if (inventoryManager != null)
         {
-            inventoryManager.AddItemToHotBar(item); // Add the item to the inventory
+            if (gameObject.activeSelf == true)
+            {
+                inventoryManager.AddItemToHotBar(item); // Add the item to the inventory
+            }
+            gameObject.SetActive(false);
             Destroy(gameObject); // Remove the item from the scene
         }
         else
