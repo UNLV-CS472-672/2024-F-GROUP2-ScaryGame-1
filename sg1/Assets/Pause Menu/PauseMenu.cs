@@ -126,6 +126,8 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("TitleScreen");
         
         FloorSaltLogic.saltInstances.Clear();
+        Movement.LockMovement = false;
+
     }
 
     void QuitGame()
@@ -136,7 +138,7 @@ public class PauseMenu : MonoBehaviour
     void EnablePlayerControls(bool enable)
     {
         // The player has a script named "Movement" that controls the camera and movement
-        player.GetComponent<Movement>().enabled = enable;
+        Movement.LockMovement = true;
 
         if (enable)
         {
