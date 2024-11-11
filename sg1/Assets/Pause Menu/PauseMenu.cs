@@ -98,7 +98,7 @@ public class PauseMenu : MonoBehaviour
         savedRotation = player.transform.rotation;
 
         // Freeze the player's position and rotation
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        Movement.LockMovement = true;
 
         // Unlock and show the cursor
         Cursor.lockState = CursorLockMode.None;
@@ -124,6 +124,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScreen");
+        
+        FloorSaltLogic.saltInstances.Clear();
+        Movement.LockMovement = false;
+
     }
 
     void QuitGame()
@@ -134,15 +138,15 @@ public class PauseMenu : MonoBehaviour
     void EnablePlayerControls(bool enable)
     {
         // The player has a script named "Movement" that controls the camera and movement
-        player.GetComponent<Movement>().enabled = enable;
+        Movement.LockMovement = true;
 
         if (enable)
         {
-            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            Movement.LockMovement = false;
         }
         else
         {
-            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            Movement.LockMovement = true;
         }
     }
 }
