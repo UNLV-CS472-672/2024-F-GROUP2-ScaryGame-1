@@ -15,23 +15,28 @@ public class CeilingLampLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Initialize light object
         ThisLight = this.GetComponent<Light>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Check if the light is off or on
         if (light_on)
         {
-            if (Vector3.Distance(this.gameObject.transform.position, AntagonistTransform.position) <= LIGHTOFFRADIUS)
+            // Light is on - check that the antagonist is nearby, then flicker the light off
+            if (Vector3.Distance(this.gameObject.transform.position, AntagonistTransform.position) < LIGHTOFFRADIUS)
             {
                 LightFlickerOff();
             }
         }
         else
         {
+            // Light is off - check that it has been at least x seconds since it turned off
             if ((Time.realtimeSinceStartup - gametime_at_off) > OFFTIME)
             {
+                // Light was turned off over x seconds ago, check that the antagonist is not near. then turn the light back on
                 if (Vector3.Distance(this.gameObject.transform.position, AntagonistTransform.position) > LIGHTOFFRADIUS)
                 {
                     LightFlickerOn();
@@ -40,6 +45,7 @@ public class CeilingLampLogic : MonoBehaviour
         }
     }
 
+    // A function that is called to turn the light object on
     private void LightFlickerOff()
     {
         light_on = false;
@@ -47,6 +53,7 @@ public class CeilingLampLogic : MonoBehaviour
         StartCoroutine(FlickerOffTimedActions());
     }
 
+    // A time-based, blocking function that turns the light object of the lamp off, on, then off to emulate "flickering" off
     private IEnumerator FlickerOffTimedActions()
     {
         ThisLight.enabled = false;
@@ -56,12 +63,13 @@ public class CeilingLampLogic : MonoBehaviour
         ThisLight.enabled = false;
     }
 
+    // A function that is called to turn the light object off
     private void LightFlickerOn()
     {
         light_on = true;
         StartCoroutine(FlickerOnTimedActions());
     }
-
+    // A time-based, blocking function that turns the light object of the lamp on, off, then on to emulate "flickering" on
     private IEnumerator FlickerOnTimedActions()
     {
         ThisLight.enabled = true;
