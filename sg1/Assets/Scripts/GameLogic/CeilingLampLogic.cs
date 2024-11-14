@@ -6,17 +6,21 @@ public class CeilingLampLogic : MonoBehaviour
 {
     public Transform AntagonistTransform;
 
-    private const float LIGHTOFFRADIUS = 1.5f;
+    private const float LIGHTOFFRADIUS = 1.6f;
     private const float OFFTIME = 2.0f;
 
     private float gametime_at_off = 0f;
     private bool light_on = true;
     private Light ThisLight;
+    private MeshRenderer ThisRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Initialize light object
         ThisLight = this.GetComponent<Light>();
+        //Initialize renderer object
+        ThisRenderer = this.GetComponent<MeshRenderer>();
+
     }
 
     // Update is called once per frame
@@ -57,10 +61,14 @@ public class CeilingLampLogic : MonoBehaviour
     private IEnumerator FlickerOffTimedActions()
     {
         ThisLight.enabled = false;
+        ThisRenderer.materials[1].SetVector("_EmissionColor", new Vector4(0.1f, 0.1f, 0.1f));
         yield return new WaitForSeconds(0.1f);
         ThisLight.enabled = true;
+        ThisRenderer.materials[1].SetVector("_EmissionColor", new Vector4(0.5f, 0.5f, 0.5f));
         yield return new WaitForSeconds(0.1f);
         ThisLight.enabled = false;
+        ThisRenderer.materials[1].SetVector("_EmissionColor", new Vector4(0.1f, 0.1f, 0.1f));
+
     }
 
     // A function that is called to turn the light object off
@@ -73,9 +81,13 @@ public class CeilingLampLogic : MonoBehaviour
     private IEnumerator FlickerOnTimedActions()
     {
         ThisLight.enabled = true;
+        ThisRenderer.materials[1].SetVector("_EmissionColor", new Vector4(0.5f, 0.5f, 0.5f));
         yield return new WaitForSeconds(0.1f);
         ThisLight.enabled = false;
+        ThisRenderer.materials[1].SetVector("_EmissionColor", new Vector4(0.1f, 0.1f, 0.1f));
         yield return new WaitForSeconds(0.1f);
         ThisLight.enabled = true;
+        ThisRenderer.materials[1].SetVector("_EmissionColor", new Vector4(0.5f, 0.5f, 0.5f));
+
     }
 }
