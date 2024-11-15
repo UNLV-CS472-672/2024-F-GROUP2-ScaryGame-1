@@ -8,6 +8,7 @@ public class CeilingLampLogic : MonoBehaviour
 
     private const float LIGHTOFFRADIUS = 1.6f;
     private const float OFFTIME = 2.0f;
+    private const float INTENSITY = 0.7f;
 
     private float gametime_at_off = 0f;
     private bool light_on = true;
@@ -20,6 +21,8 @@ public class CeilingLampLogic : MonoBehaviour
         ThisLight = this.GetComponent<Light>();
         //Initialize renderer object
         ThisRenderer = this.GetComponent<MeshRenderer>();
+
+        ThisLight.intensity = INTENSITY;
 
     }
 
