@@ -6267,183 +6267,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139613069}
   m_CullTransparentMesh: 1
---- !u!1001 &2614507120511946558
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 375987947103042537, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 1714330675141039175, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 1719383748469099804, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 1726741743821598994, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 1738413795223492931, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 1910267181835082560, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2256121152255422584, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2319188344103316828, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2351617488134601731, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2437816058597193639, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2523754435757504605, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2836697680790585400, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 2883608842777440481, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 3067197251773701842, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 3181307863360451921, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 3248156656228436721, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 3439489225229209216, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 3675692783824314931, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 4350944146514007799, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 4670115594821577982, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 5133097687454321631, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 5223747617877956857, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.1381067
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.6689591
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.511263
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289374312652006916, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327633021275385132, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 5511087123866357845, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 5774994808184605898, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 6413953664879068247, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 6502974080424698138, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 7007248121908122552, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 7687077680348075276, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 7829532585376333784, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: AntagonistTransform
-      value: 
-      objectReference: {fileID: 1554734359}
-    - target: {fileID: 8872047127229714167, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
-      propertyPath: m_Name
-      value: Lamps
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d254bcd06a11e9a42a5b6503269b70f1, type: 3}
 --- !u!1001 &6679212165493842084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6452,14 +6275,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 42107997470417815, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 263563488852084442, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 760627123012865607, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 1012834913489947195, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2114527303}
+    - target: {fileID: 1356946542145870452, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 1388555065243381665, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 1644374557482324696, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 1709389902384589776, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2114527303}
+    - target: {fileID: 1901988106408439411, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 2132102985348286802, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 2235417774643894111, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: playerCamera
       value: 
@@ -6504,14 +6359,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3460823988385552257, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 3606835751269076721, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2114527303}
+    - target: {fileID: 3891878772849753429, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 4293076628302418229, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 4622958871306688973, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 4794850748658310094, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 4957565582063285605, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2114527303}
+    - target: {fileID: 5036703633510101749, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 5574386579561460639, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 5575504521497564874, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 5581885252700245905, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 5842209661886809309, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: m_Name
       value: Map Core
@@ -6520,10 +6411,62 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2114527303}
+    - target: {fileID: 6889780048489068900, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 7407020466582082682, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 7613337799989960894, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8086902381660511327, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8263559468844364396, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     - target: {fileID: 8356683378330738441, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2114527303}
+    - target: {fileID: 8435567844442639373, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8542461930133370844, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8627041168606431356, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8767523524060412624, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8793334199558864526, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8828679222578196433, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 8898674926811723050, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
+    - target: {fileID: 9076817007622914741, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: AntagonistTransform
+      value: 
+      objectReference: {fileID: 1554734359}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6551,4 +6494,3 @@ SceneRoots:
   - {fileID: 683850217}
   - {fileID: 1339146970}
   - {fileID: 1664681641}
-  - {fileID: 2614507120511946558}
