@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Damager : MonoBehaviour
 {
-
+    public float firstFrameDamage = 1.0f;
+    public float nextFrameDamage = 0.5f;
     public Transform playerTransform;
     public HealthSlider healthSlider;
     private bool damagedLastFrame = false;
@@ -46,11 +47,11 @@ public class Damager : MonoBehaviour
 
     void FirstContactDamage()
     {
-        healthSlider.TakeDamage(1.0f);
+        healthSlider.TakeDamage(firstFrameDamage);
     }
 
     void ContinuedDamage()
     {
-        healthSlider.TakeDamage(0.5f);
+        healthSlider.TakeDamage(nextFrameDamage);
     }
 }

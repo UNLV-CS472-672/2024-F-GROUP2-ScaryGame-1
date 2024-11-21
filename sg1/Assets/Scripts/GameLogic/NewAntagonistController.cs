@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -35,6 +36,7 @@ public class NewAntagonistController : MonoBehaviour
         agent.destination = playerTransform.position;
         pathFindingState = PathFindingState.Patrolling;
         thisAgent = GetComponent<NavMeshAgent>();
+        StartCoroutine(GlitchControl());
     }
 
     // Update is called once per frame
@@ -131,4 +133,32 @@ public class NewAntagonistController : MonoBehaviour
 
         return false;
     }
+
+    public IEnumerator GlitchControl()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3f, 5f));
+            StartCoroutine(Glitch());
+        }
+    }
+
+    public IEnumerator Glitch()
+    {
+        Vector3 start = transform.position;
+        Vector3 goal = transform.position;
+        goal.x += Random.Range(-0.5f, 0.5f);
+        goal.z += Random.Range(-0.5f, 0.5f);
+        float timeElapsed = 0f;
+        float animTime = 0.25f;
+        while(timeElapsed < animTime)
+        {
+            transform.position = Vector3.Lerp(start, goal, timeElapsed/animTime);
+            yield return new WaitForSeconds(0.05f);
+            timeElapsed += 0.05f;
+        }
+
+        transform.position = start;
+    }
+
 }
