@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 public class Damager : MonoBehaviour
 {
     public float firstFrameDamage = 1.0f;
-    public float nextFrameDamage = 0.5f;
+    public float nextFrameDamage = 5f;
     public Transform playerTransform;
     public HealthSlider healthSlider;
+    public NewAntagonistController antagonistController;
     private bool isDamaging = false;
     private float damagingTimer = 0f;
     private float damagingTimeLimit = 2f;
@@ -17,6 +18,7 @@ public class Damager : MonoBehaviour
     {
         playerTransform = GameObject.Find("Player").transform;
         healthSlider = GameObject.Find("Overlay/HealthSlider").GetComponent<HealthSlider>();
+        antagonistController = GetComponent<NewAntagonistController>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class Damager : MonoBehaviour
             cooldownTimer = 0f;
             damagingTimer = 0f;
             isDamaging = false;
+            StartCoroutine(antagonistController.Avoid());
         }
 
         // Because of the autostopping distance on the NavMeshAgent, I am just doing a distance check, not collision
@@ -64,6 +67,6 @@ public class Damager : MonoBehaviour
 
     void ContinuedDamage()
     {
-        healthSlider.TakeDamage(nextFrameDamage);
+        healthSlider.TakeDamage(Time.deltaTime * nextFrameDamage);
     }
 }

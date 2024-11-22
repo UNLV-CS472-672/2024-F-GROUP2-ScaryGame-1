@@ -1,4 +1,5 @@
 using System.Collections;
+using Moq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -36,7 +37,7 @@ public class NewAntagonistController : MonoBehaviour
         agent.destination = playerTransform.position;
         pathFindingState = PathFindingState.Patrolling;
         thisAgent = GetComponent<NavMeshAgent>();
-        StartCoroutine(GlitchControl());
+        //StartCoroutine(GlitchControl());
     }
 
     // Update is called once per frame
@@ -159,6 +160,26 @@ public class NewAntagonistController : MonoBehaviour
         }
 
         transform.position = start;
+    }
+    public IEnumerator Avoid()
+    {
+        yield return StartCoroutine(Glitch());
+        for(int i = 0; i < 10; i++)
+        {
+            Vector3 randomPos = playerTransform.position;
+            randomPos.x += Random.Range(-7f, 7f);
+            randomPos.y += Random.Range(-7f, 7f);
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPos, out hit, 2.0f, NavMesh.AllAreas))
+            {
+                transform.position = hit.position;
+                break;
+            }
+            if(i == 9)
+            {
+                Debug.Log("Failed");
+            }
+        }
     }
 
 }
