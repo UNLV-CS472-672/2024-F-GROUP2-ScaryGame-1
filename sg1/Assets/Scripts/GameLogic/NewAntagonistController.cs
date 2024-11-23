@@ -135,15 +135,6 @@ public class NewAntagonistController : MonoBehaviour
         return false;
     }
 
-    public IEnumerator GlitchControl()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(3f, 5f));
-            StartCoroutine(Glitch());
-        }
-    }
-
     public IEnumerator Glitch()
     {
         Vector3 start = transform.position;
@@ -168,7 +159,7 @@ public class NewAntagonistController : MonoBehaviour
         {
             Vector3 randomPos = playerTransform.position;
             randomPos.x += Random.Range(-7f, 7f);
-            randomPos.y += Random.Range(-7f, 7f);
+            randomPos.z += Random.Range(-7f, 7f);
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPos, out hit, 2.0f, NavMesh.AllAreas))
             {
@@ -180,6 +171,7 @@ public class NewAntagonistController : MonoBehaviour
                 Debug.Log("Failed");
             }
         }
+        yield return StartCoroutine(Glitch());
     }
 
 }

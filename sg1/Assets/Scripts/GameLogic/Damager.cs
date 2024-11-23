@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Damager : MonoBehaviour
 {
     public float firstFrameDamage = 1.0f;
-    public float nextFrameDamage = 5f;
+    public float nextFrameDamage = 10f;
     public Transform playerTransform;
     public HealthSlider healthSlider;
     public NewAntagonistController antagonistController;
