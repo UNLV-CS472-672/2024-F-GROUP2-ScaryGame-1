@@ -62,7 +62,7 @@ public class NewAntagonistController : MonoBehaviour
                 pathFindingState = PathFindingState.Chasing;
                 chasingTimer = 0;
                 refindTimer = 0;
-                Debug.Log("Chasing");
+                // Debug.Log("Chasing");
             }
             else
             {
@@ -138,11 +138,13 @@ public class NewAntagonistController : MonoBehaviour
     public IEnumerator Glitch()
     {
         Vector3 start = transform.position;
+        // pick a random position
         Vector3 goal = transform.position;
         goal.x += Random.Range(-0.5f, 0.5f);
         goal.z += Random.Range(-0.5f, 0.5f);
         float timeElapsed = 0f;
         float animTime = 0.25f;
+        // move to new position
         while(timeElapsed < animTime)
         {
             transform.position = Vector3.Lerp(start, goal, timeElapsed/animTime);
@@ -150,25 +152,27 @@ public class NewAntagonistController : MonoBehaviour
             timeElapsed += 0.05f;
         }
 
+        // go back to original position
         transform.position = start;
     }
     public IEnumerator Avoid()
     {
         yield return StartCoroutine(Glitch());
+        // try to find a new position 10 times
         for(int i = 0; i < 10; i++)
         {
+            // pick a random position
             Vector3 randomPos = playerTransform.position;
             randomPos.x += Random.Range(-7f, 7f);
             randomPos.z += Random.Range(-7f, 7f);
             NavMeshHit hit;
+
+            // check if new position is on navmesh
             if (NavMesh.SamplePosition(randomPos, out hit, 2.0f, NavMesh.AllAreas))
             {
+                // if new position is on navmesh, teleport to it
                 transform.position = hit.position;
                 break;
-            }
-            if(i == 9)
-            {
-                Debug.Log("Failed");
             }
         }
         yield return StartCoroutine(Glitch());

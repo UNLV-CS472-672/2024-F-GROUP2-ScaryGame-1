@@ -34,6 +34,7 @@ public class Damager : MonoBehaviour
             cooldownTimer = 0f;
             damagingTimer = 0f;
             isDamaging = false;
+            // Once damage timer runs out, teleport away from the player
             StartCoroutine(antagonistController.Avoid());
         }
 
