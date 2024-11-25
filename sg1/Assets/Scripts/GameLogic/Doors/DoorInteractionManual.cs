@@ -34,7 +34,8 @@ public class DoorInteractionManual : MonoBehaviour
             {
                 // I think it would be annoying if this showed up every time
                 hasEnteredDoor = true;
-                helpInfo.ShowMessage("Click to open door", 3f);
+                if(helpInfo != null) 
+                    helpInfo.ShowMessage("Click to open door", 3f);
             }
         }
     }
