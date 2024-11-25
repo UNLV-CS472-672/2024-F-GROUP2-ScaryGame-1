@@ -9,7 +9,8 @@ public class MinigameInteraction : MonoBehaviour
     private bool isPlayerNearby = false; // Tracks if the player is close to the object
     private bool isMinigameOpen = false; // Tracks if the mini-game is currently open
 
-    public HelpInfo helpInfo;
+    public HelpInfo helpInfo; // used to display help message
+
     void Update()
     {
         // Check for input only if the player is nearby and mini-game is closed
@@ -26,6 +27,7 @@ public class MinigameInteraction : MonoBehaviour
                 CloseMinigame();
             }
         }
+
         if(isPlayerNearby) helpInfo.ShowMessage("Press E to open minigame", 0.1f);
     }
 

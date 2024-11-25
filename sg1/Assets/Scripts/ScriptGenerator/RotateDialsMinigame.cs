@@ -7,9 +7,9 @@ public class RotateDialsMinigame : MonoBehaviour, IMiniGame
 {
     DialController[] dials;
     public Button stopButton;
-    public GameObject gameCanvas;
-    public GameObject failCanvas;
-    public GameObject successCanvas;
+    public GameObject gameCanvas; // canvas with game
+    public GameObject failCanvas; // fail message
+    public GameObject successCanvas; // win message
     private bool gameInProgress = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +26,7 @@ public class RotateDialsMinigame : MonoBehaviour, IMiniGame
 
     }
 
+    // Rotate all dials
     void RotateDials()
     {
         foreach (DialController dial in dials)
@@ -44,32 +45,37 @@ public class RotateDialsMinigame : MonoBehaviour, IMiniGame
             StartCoroutine(FailGame());
         }
     }
-
+    
     public IEnumerator FailGame()
     {
         gameInProgress = false;
         yield return new WaitForSeconds(0.5f);
+
+        // display fail message for 1 second
         gameCanvas.SetActive(false);
         failCanvas.SetActive(true);
         successCanvas.SetActive(false);
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(2f);
+        // start new game
         gameCanvas.SetActive(true);
         failCanvas.SetActive(false);
         successCanvas.SetActive(false);
         gameInProgress = true;
     }
 
+    // Enable canvas with win message
     public IEnumerator WinGame()
     {
+        gameInProgress = false;
         yield return new WaitForSeconds(0.5f);
         gameCanvas.SetActive(false);
         failCanvas.SetActive(false);
         successCanvas.SetActive(true);
-        gameInProgress = false;
         CompleteMiniGame();
     }
 
+    // Returns true if all dials are in correct rangel
     bool StopDials()
     {
         foreach(DialController dial in dials)

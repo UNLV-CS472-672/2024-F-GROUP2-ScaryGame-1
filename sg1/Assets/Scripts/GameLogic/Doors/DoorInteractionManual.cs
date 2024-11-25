@@ -28,8 +28,11 @@ public class DoorInteractionManual : MonoBehaviour
             // if the player collides with this, set it's current doorController to 
             // the one matching the collider
             doorController = collider.GetComponentInParent<DoorController>();
+
+            // display a help message the first time the player enters trigger
             if(!hasEnteredDoor)
             {
+                // I think it would be annoying if this showed up every time
                 hasEnteredDoor = true;
                 helpInfo.ShowMessage("Click to open door", 3f);
             }

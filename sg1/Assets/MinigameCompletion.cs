@@ -6,6 +6,7 @@ public class MinigameCompletion : MonoBehaviour
     private TextMeshProUGUI text;
     private int completedGames = 0;
     private int totalGames = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,7 @@ public class MinigameCompletion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if number of games completed has change, redisplay text
         if(completedGames != MinigameManager.instance.completedMiniGames)
         {
             completedGames = MinigameManager.instance.completedMiniGames;

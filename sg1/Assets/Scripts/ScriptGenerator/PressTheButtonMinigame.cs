@@ -30,15 +30,19 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         }
     }
 
+    // Called anytime the GameObject is enabled, starts a new sequence
     void OnEnable()
     {
+        // reset colors
         for (int i = 0; originalColors != null && i < buttons.Length; ++i)
         {
             buttons[i].GetComponent<Image>().color = originalColors[i];
         }
+
         StartNewSequence();
     }
 
+    // Generate and display a new sequence
     void StartNewSequence()
     {
         if (isGameCompleted) return;
@@ -48,7 +52,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
-            buttons[i].onClick.RemoveAllListeners();
+            buttons[i].onClick.RemoveAllListeners(); // Only want one listener
             buttons[i].onClick.AddListener(() => OnButtonPressed(index));
         }
 
@@ -64,6 +68,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
                                     .ToArray();
     }
 
+    // Display sequence
     IEnumerator FlashSequence()
     {
         if (isGameCompleted) yield break;
@@ -71,6 +76,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         playerCanInteract = false;
         yield return new WaitForSeconds(initialDelay);
 
+        // temporarily change color of each button in sequence
         for (int i = 0; i < correctSequence.Length; i++)
         {
             int buttonIndex = correctSequence[i];
@@ -92,13 +98,12 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         {
             currentStep++;
 
+            // Display win message if player remembers sequence
             if (currentStep >= correctSequence.Length)
             {
                 Debug.Log("Correct sequence completed!");
                 isGameCompleted = true;
                 CompleteMiniGame();
-                // CloseMiniGame();
-                // miniGameCanvas.SetActive(false);
             }
         }
         else
@@ -132,6 +137,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
 
     public void CompleteMiniGame()
     {
+        // display win message
         miniGameCanvas.SetActive(false);
         successCanvas.SetActive(true);
         failCanvas.SetActive(false);
@@ -140,10 +146,13 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
 
     public IEnumerator LoseGame()
     {
+        // temporarily show lose message
         miniGameCanvas.SetActive(false);
         successCanvas.SetActive(false);
         failCanvas.SetActive(true);
         yield return new WaitForSeconds(1f);
+
+        // start a new game
         miniGameCanvas.SetActive(true);
         successCanvas.SetActive(false);
         failCanvas.SetActive(false);
