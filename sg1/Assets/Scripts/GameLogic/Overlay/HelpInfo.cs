@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using Codice.Client.Common;
 public class HelpInfo : MonoBehaviour
 {
     //public static HelpInfo instance;

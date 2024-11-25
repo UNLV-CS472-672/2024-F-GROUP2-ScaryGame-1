@@ -1,4 +1,3 @@
-using Castle.Components.DictionaryAdapter;
 using UnityEngine;
 
 public class DialController : MonoBehaviour

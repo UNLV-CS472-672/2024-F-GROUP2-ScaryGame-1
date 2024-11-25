@@ -1,4 +1,3 @@
-using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
