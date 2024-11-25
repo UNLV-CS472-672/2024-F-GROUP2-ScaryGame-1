@@ -4,6 +4,8 @@ public class DoorInteractionManual : MonoBehaviour
 {
     public DoorController doorController = null;
     public IInput input = null;
+    public HelpInfo helpInfo;
+    private static bool hasEnteredDoor = false;
 
 
     public void Start()
@@ -26,6 +28,11 @@ public class DoorInteractionManual : MonoBehaviour
             // if the player collides with this, set it's current doorController to 
             // the one matching the collider
             doorController = collider.GetComponentInParent<DoorController>();
+            if(!hasEnteredDoor)
+            {
+                hasEnteredDoor = true;
+                helpInfo.ShowMessage("Click to open door", 3f);
+            }
         }
     }
 
