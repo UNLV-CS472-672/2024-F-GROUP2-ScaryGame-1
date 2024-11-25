@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-public class RotateDialsMinigame : MonoBehaviour
+public class RotateDialsMinigame : MonoBehaviour, IMiniGame
 {
     DialController[] dials;
     public Button stopButton;
@@ -67,6 +67,7 @@ public class RotateDialsMinigame : MonoBehaviour
         failCanvas.SetActive(false);
         successCanvas.SetActive(true);
         gameInProgress = false;
+        CompleteMiniGame();
     }
 
     bool StopDials()
@@ -76,5 +77,10 @@ public class RotateDialsMinigame : MonoBehaviour
             if (!dial.InRange()) return false;
         }
         return true;
+    }
+
+    public void CompleteMiniGame()
+    {
+        MinigameManager.instance.MiniGameCompleted();
     }
 }

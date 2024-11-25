@@ -9,7 +9,7 @@ public class MinigameManager : MonoBehaviour
     public List<GameObject> miniGameObjects; // List of GameObjects with mini-game components
     private List<IMiniGame> miniGames = new List<IMiniGame>();
 
-    private int completedMiniGames = 0;
+    public int completedMiniGames = 0;
 
     void Awake()
     {
@@ -57,6 +57,7 @@ public class MinigameManager : MonoBehaviour
 
     private void OpenFinalObject()
     {
+        if (finalObjectToOpen == null) return;
         finalObjectToOpen.SetActive(true);
         Debug.Log("All mini-games completed! Final object opened.");
     }
