@@ -47,3 +47,5 @@ MonoBehaviour:
   finalObjectToOpen: {fileID: 0}
   miniGameObjects:
   - {fileID: 0}
+  - {fileID: 0}
+  completedMiniGames: 0

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8965526355931978766}
   - component: {fileID: 8812519158963214794}
   - component: {fileID: 1663177915798080481}
+  - component: {fileID: 8103644161409177981}
   m_Layer: 0
   m_Name: NewAntagonist
   m_TagString: Player
@@ -325,6 +326,22 @@ MonoBehaviour:
   blendDistance: 10
   weight: 1
   sharedProfile: {fileID: 11400000, guid: e38e12fed92d46f4fab255f60fd89c61, type: 2}
+--- !u!114 &8103644161409177981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2270684186737072947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5a2b43967890f408282e9311bac853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantSound: {fileID: 609823957156183460}
+  proximitySound: {fileID: 5049227345214294591}
+  player: {fileID: 0}
+  alertDistance: 7
 --- !u!1 &4513412492408041864
 GameObject:
   m_ObjectHideFlags: 0
