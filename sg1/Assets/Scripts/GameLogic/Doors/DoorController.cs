@@ -1,7 +1,10 @@
+using System.Threading;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    public float closedTimer = 3f;
+    public static float closedCooldown = 3f;
 
     // The Animator component manages the door opening and closing animations.
     public IAnimator animator;
@@ -10,6 +13,15 @@ public class DoorController : MonoBehaviour
     public void Start()
     {
         animator = new AnimatorWrapper(GetComponentInChildren<Animator>());
+    }
+
+    public void Update()
+    {
+        if(inClosedState())
+        {
+            closedTimer += Time.deltaTime;
+        }
+
     }
 
     // These functions just return the current state of the animation.
@@ -34,6 +46,10 @@ public class DoorController : MonoBehaviour
     public void toggleDoor() {
         bool closed = animator.GetBool("isClosed");
         if(inClosedState() && closed || inOpenState() && !closed) {
+            if(!closed) // if it was open, make antagonist wait to reopen
+            {
+                closedTimer = 0f;       
+            }
             animator.SetBool("isClosed", !closed);
         }
     }
@@ -41,6 +57,9 @@ public class DoorController : MonoBehaviour
     // Opens door only if it is closed. 
     [ContextMenu("open door")]
     public void openDoor() {
-        if(inClosedState()) animator.SetBool("isClosed", false);
+        if (inClosedState() && closedTimer >= closedCooldown)
+        {
+            animator.SetBool("isClosed", false);
+        }
     }
 }
