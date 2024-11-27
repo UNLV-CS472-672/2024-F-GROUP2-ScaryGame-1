@@ -7,6 +7,8 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
 {
     public Button[] buttons; // Array of UI Buttons in the mini-game
     public GameObject miniGameCanvas; // Reference to the mini-game Canvas or parent GameObject to deactivate
+    public GameObject failCanvas;
+    public GameObject successCanvas;
     public Color flashColor = Color.yellow; // Color to flash the buttons
     public float flashDuration = 0.5f; // Duration each button flashes
     public float delayBetweenFlashes = 0.5f; // Delay between each button flash
@@ -18,7 +20,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
     private int currentStep = 0; // Track the player's progress in the sequence
     private bool playerCanInteract = false; // Allow player interaction only after flashing sequence
     private bool isGameCompleted = false; // Track if the game has already been completed
-
+    
     void Start()
     {
         originalColors = new Color[buttons.Length];
@@ -26,12 +28,31 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         {
             originalColors[i] = buttons[i].GetComponent<Image>().color;
         }
+    }
+
+    // Called anytime the GameObject is enabled, starts a new sequence
+    void OnEnable()
+    {
+        // reset colors
+        for (int i = 0; originalColors != null && i < buttons.Length; ++i)
+        {
+            buttons[i].GetComponent<Image>().color = originalColors[i];
+        }
+
+        StartNewSequence();
+    }
+
+    // Generate and display a new sequence
+    void StartNewSequence()
+    {
+        if (isGameCompleted) return;
 
         GenerateRandomSequence();
 
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
+            buttons[i].onClick.RemoveAllListeners(); // Only want one listener
             buttons[i].onClick.AddListener(() => OnButtonPressed(index));
         }
 
@@ -47,6 +68,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
                                     .ToArray();
     }
 
+    // Display sequence
     IEnumerator FlashSequence()
     {
         if (isGameCompleted) yield break;
@@ -54,6 +76,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         playerCanInteract = false;
         yield return new WaitForSeconds(initialDelay);
 
+        // temporarily change color of each button in sequence
         for (int i = 0; i < correctSequence.Length; i++)
         {
             int buttonIndex = correctSequence[i];
@@ -75,13 +98,12 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         {
             currentStep++;
 
+            // Display win message if player remembers sequence
             if (currentStep >= correctSequence.Length)
             {
                 Debug.Log("Correct sequence completed!");
                 isGameCompleted = true;
                 CompleteMiniGame();
-                CloseMiniGame();
-                miniGameCanvas.SetActive(false);
             }
         }
         else
@@ -89,7 +111,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
             Debug.Log("Wrong sequence!");
             playerCanInteract = false;
             currentStep = 0;
-            StartCoroutine(FlashSequence());
+            StartCoroutine(LoseGame());
         }
     }
 
@@ -115,6 +137,25 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
 
     public void CompleteMiniGame()
     {
+        // display win message
+        miniGameCanvas.SetActive(false);
+        successCanvas.SetActive(true);
+        failCanvas.SetActive(false);
         MinigameManager.instance.MiniGameCompleted();
+    }
+
+    public IEnumerator LoseGame()
+    {
+        // temporarily show lose message
+        miniGameCanvas.SetActive(false);
+        successCanvas.SetActive(false);
+        failCanvas.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        // start a new game
+        miniGameCanvas.SetActive(true);
+        successCanvas.SetActive(false);
+        failCanvas.SetActive(false);
+        StartNewSequence();
     }
 }

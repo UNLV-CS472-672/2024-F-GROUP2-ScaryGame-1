@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 590713874040520505}
   - component: {fileID: 825168620957131300}
   - component: {fileID: 7939238632856961546}
-  - component: {fileID: 9119347396111180124}
+  - component: {fileID: 1926199786794351721}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -275,7 +275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorController: {fileID: 0}
---- !u!114 &9119347396111180124
+  helpInfo: {fileID: 0}
+--- !u!114 &1926199786794351721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

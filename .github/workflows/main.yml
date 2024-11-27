@@ -30,7 +30,7 @@ jobs:
         with:
           projectPath: ./sg1
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageOptions: 'generateHtmlReport;generateBadgeReport;assemblyFilters:+GameLogic'
+          coverageOptions: 'generateHtmlReport;generateBadgeReport;assemblyFilters:+Scripts'
       - name: Line Coverage
         run: |
           jq '.summary.linecoverage' ${{ steps.unit-tests.outputs.coveragePath }}/Report/Summary.json
