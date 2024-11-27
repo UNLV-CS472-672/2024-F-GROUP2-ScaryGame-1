@@ -20,9 +20,9 @@ public class MapController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UpdateGameobjectActive(false);
         rt_player = PlayerUIDot.GetComponent<RectTransform>();
         rt_antagonist = AntagonistUIDot.GetComponent<RectTransform>();
-
     }
 
     // Update is called once per frame
