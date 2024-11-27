@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class CaptchaMinigameController : MonoBehaviour
+public class CaptchaMinigameController : MonoBehaviour, IMiniGame
 {
     public GameObject button_verify;
 
@@ -89,6 +89,10 @@ public class CaptchaMinigameController : MonoBehaviour
         }
 
         aliens_in_captcha = 3;
+        if (alien_indexes[0] == 55)
+        {
+            CompleteMiniGame();
+        }
     }
 
     // Update is called once per frame
@@ -100,5 +104,10 @@ public class CaptchaMinigameController : MonoBehaviour
     private void HandleButtonClick(int b_idx)
     {
         return;
+    }
+
+    public void CompleteMiniGame()
+    {
+        MinigameManager.instance.MiniGameCompleted();
     }
 }
