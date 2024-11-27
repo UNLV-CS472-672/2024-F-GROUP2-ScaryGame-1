@@ -16,7 +16,7 @@ public class MapController : MonoBehaviour
     public GameObject Minigame4;
     public GameObject Minigame5;
 
-    private RectTransform rt_player;
+    private RectTransform rt_player, rt_antagonist;
 
     private float map_bounds_z1 = -6.2f;
     private float map_bounds_z2 = 23.5f;
@@ -29,10 +29,12 @@ public class MapController : MonoBehaviour
     void Start()
     {
         rt_player = PlayerUIDot.GetComponent<RectTransform>();
+        rt_antagonist = AntagonistUIDot.GetComponent<RectTransform>();
+
         
 
-        map_bound_x_mean = (map_bounds_x1 + map_bounds_x2 / 2f);
-        map_bound_z_mean = (map_bounds_z1 + map_bounds_z2 / 2f);
+        //map_bound_x_mean = (map_bounds_x1 + map_bounds_x2 / 2f);
+        //map_bound_z_mean = (map_bounds_z1 + map_bounds_z2 / 2f);
 
     }
 
@@ -50,6 +52,8 @@ public class MapController : MonoBehaviour
         }
         */
         UpdateMinimapDotPosition(rt_player, PlayerTransform.transform.position);
+        UpdateMinimapDotPosition(rt_antagonist, AntagonistTransform.transform.position);
+
     }
 
     void UpdateMinimapDotPosition(RectTransform RT_Dot, Vector3 WorldPosition)
