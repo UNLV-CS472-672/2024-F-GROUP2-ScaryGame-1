@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CaptchaMinigameController : MonoBehaviour, IMiniGame
 {
+    public GameObject CaptchaMinigameCanvas;
+    public GameObject FailCanvas;
+    public GameObject WinCanvas;
     public GameObject button_verify;
 
     private string[] button_names = {"c_button1",
@@ -45,22 +49,36 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
 
     private Sprite[] alien_sprites = new Sprite[9];
     private Sprite[] ghost_sprites = new Sprite[9];
+    private Sprite border_sprite;
 
     private List<int> alien_indexes = new List<int>();
     private List<int> ghost_indexes = new List<int>();
     private List<int> alien_position_indexes = new List<int>();
-
-
+    private float fade_seconds = 2.8f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+        SetupGame();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void SetupGame()
     {
         // You know what, I'm not even going to write actual documentation for this because nobody wants to read this. This is horrifying
         for (int i = 0; i < 9; i++)
         {
             o_button[i] = GameObject.Find(button_names[i]);
             b_button[i] = o_button[i].GetComponent<Button>();
-            b_button[i].onClick.AddListener(delegate{HandleButtonClick(i);});
+            int button_idx = i;
+            b_button[i].onClick.AddListener(() => {HandleButtonClick(button_idx);});
+            button_verify.GetComponent<Button>().onClick.AddListener(HandleVerifyClick);
+            button_verify.GetComponent<Button>().enabled = true;
 
             idx_is_alien[i] = false;
             alien_indexes.Add(i);
@@ -89,21 +107,108 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         }
 
         aliens_in_captcha = 3;
+        border_sprite = Resources.Load<Sprite>("CaptchaSprites/border_full");
+
+
+
         if (alien_indexes[0] == 55)
         {
             CompleteMiniGame();
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void HandleButtonClick(int b_idx)
     {
-        return;
+        if (idx_is_alien[b_idx] == false)
+        {
+            StartCoroutine(LoseGame());
+        }
+        else
+        {
+            if (aliens_in_captcha > 1)
+            {
+                StartCoroutine(SwapButtonImageAtIdx(b_idx, false));
+                aliens_in_captcha--;
+            }
+            else
+            {
+                StartCoroutine(SwapButtonImageAtIdx(b_idx, true));
+            }
+        }
+    }
+    private void HandleVerifyClick()
+    {
+        Debug.Log("You have clicked the button!");
+        button_verify.GetComponent<Button>().enabled = false;
+        if (aliens_in_captcha == 0)
+        {
+            StartCoroutine(WinGame());
+        }
+        else
+        {
+            StartCoroutine(LoseGame());
+        }
+    }
+
+    private IEnumerator SwapButtonImageAtIdx(int b_idx, bool one_left)
+    {
+        b_button[b_idx].enabled = false;
+        float yield_wait_time = fade_seconds / 100f;
+        for (int i = 0; i < 100; i++)
+        {
+            o_button[b_idx].GetComponent<Image>().color = new Vector4(1f,1f,1f,(1f-(float)i/100f));
+            yield return new WaitForSeconds(yield_wait_time);
+        }
+
+        if (one_left)
+        {
+            if (alien_idx < 8)
+            {
+                o_button[b_idx].GetComponent<Image>().sprite = alien_sprites[alien_idx];
+                alien_idx++;
+            }
+            else
+            {
+                o_button[b_idx].GetComponent<Image>().sprite = ghost_sprites[b_idx];
+                idx_is_alien[b_idx] = false;
+                aliens_in_captcha--;
+
+            }
+        }
+        else
+        {
+            o_button[b_idx].GetComponent<Image>().sprite = ghost_sprites[b_idx];
+            idx_is_alien[b_idx] = false;
+
+        }
+        for (int i = 0; i < 100; i++)
+        {
+            o_button[b_idx].GetComponent<Image>().color = new Vector4(1f,1f,1f,(float)i/100f);
+            yield return new WaitForSeconds(yield_wait_time);
+        }
+        b_button[b_idx].enabled = true;
+
+    }
+    private IEnumerator WinGame()
+    {
+        yield return new WaitForSeconds(0.2f);
+        CaptchaMinigameCanvas.SetActive(false);
+        FailCanvas.SetActive(false);
+        WinCanvas.SetActive(true);
+        CompleteMiniGame();
+    }
+    
+    private IEnumerator LoseGame()
+    {
+        yield return new WaitForSeconds(0.2f);
+        CaptchaMinigameCanvas.SetActive(false);
+        FailCanvas.SetActive(true);
+        WinCanvas.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        CaptchaMinigameCanvas.SetActive(true);
+        FailCanvas.SetActive(false);
+        WinCanvas.SetActive(false);
+        SetupGame();
     }
 
     public void CompleteMiniGame()
