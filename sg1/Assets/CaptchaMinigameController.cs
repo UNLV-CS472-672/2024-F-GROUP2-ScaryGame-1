@@ -71,6 +71,11 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
     void SetupGame()
     {
         // You know what, I'm not even going to write actual documentation for this because nobody wants to read this. This is horrifying
+        alien_indexes.Clear();
+        ghost_indexes.Clear();
+        alien_position_indexes.Clear();
+        StopCoroutine(SwapButtonImageAtIdx(0, false));
+        button_verify.GetComponent<Button>().enabled = true;
         for (int i = 0; i < 9; i++)
         {
             o_button[i] = GameObject.Find(button_names[i]);
@@ -78,7 +83,6 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
             int button_idx = i;
             b_button[i].onClick.AddListener(() => {HandleButtonClick(button_idx);});
             button_verify.GetComponent<Button>().onClick.AddListener(HandleVerifyClick);
-            button_verify.GetComponent<Button>().enabled = true;
 
             idx_is_alien[i] = false;
             alien_indexes.Add(i);
@@ -204,7 +208,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         CaptchaMinigameCanvas.SetActive(false);
         FailCanvas.SetActive(true);
         WinCanvas.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5.4f);
         CaptchaMinigameCanvas.SetActive(true);
         FailCanvas.SetActive(false);
         WinCanvas.SetActive(false);
