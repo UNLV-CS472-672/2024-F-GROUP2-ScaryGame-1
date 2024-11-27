@@ -28,12 +28,15 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the M key is pressed
         if (Input.GetKey(KeyCode.M))
         {
+            // Enable the Map UI elements, and modify their positions using UpdateMinimapDotPosition()
             UpdateGameobjectActive(true);
             UpdateMinimapDotPosition(rt_player, PlayerTransform.transform.position);
             UpdateMinimapDotPosition(rt_antagonist, AntagonistTransform.transform.position);
         }
+        // Otherwise, disable UI GameObjects
         else
         {
             UpdateGameobjectActive(false);
@@ -41,12 +44,14 @@ public class MapController : MonoBehaviour
 
     }
 
+    // Translate the 3D world position of a GameObject into a 2D coordinate that will fit over the Map Foreground image
     void UpdateMinimapDotPosition(RectTransform RT_Dot, Vector3 WorldPosition)
     {
         RT_Dot.localPosition = new Vector3(((((WorldPosition.x + Mathf.Abs(map_bounds_x1)) / (Mathf.Abs(map_bounds_x1) + Mathf.Abs(map_bounds_x2))) * 340f) - 170f), 0f, 0f);
         RT_Dot.localPosition = new Vector3(RT_Dot.localPosition.x, ((((WorldPosition.z + Mathf.Abs(map_bounds_z1)) / (Mathf.Abs(map_bounds_z1) + Mathf.Abs(map_bounds_z2))) * 340f) - 170f), 0f);
     }
 
+    // Set the active status of the UI Element GameObjects, so that it can be toggled with a keypress in Update()
     void UpdateGameobjectActive(bool active)
     {
         MapBackground.SetActive(active);
