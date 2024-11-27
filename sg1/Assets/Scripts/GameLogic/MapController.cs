@@ -8,6 +8,8 @@ public class MapController : MonoBehaviour
     public Transform PlayerTransform;
 
     public GameObject AntagonistUIDot;
+    public Transform AntagonistTransform;
+
     public GameObject Minigame1;
     public GameObject Minigame2;
     public GameObject Minigame3;
