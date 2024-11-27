@@ -80,6 +80,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         aliens_in_captcha = 3;
         stop_coroutine = false;
         button_verify.GetComponent<Button>().enabled = true;
+        if (first_exec == true) button_verify.GetComponent<Button>().onClick.AddListener(HandleVerifyClick);
         for (int i = 0; i < 9; i++)
         {
             o_button[i] = GameObject.Find(button_names[i]);
@@ -88,8 +89,6 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
             b_button[i].enabled = true;
             int button_idx = i;
             if (first_exec == true) b_button[i].onClick.AddListener(() => {HandleButtonClick(button_idx);});
-            button_verify.GetComponent<Button>().onClick.AddListener(HandleVerifyClick);
-
             idx_is_alien[i] = false;
             alien_indexes.Add(i);
             ghost_indexes.Add(i);
