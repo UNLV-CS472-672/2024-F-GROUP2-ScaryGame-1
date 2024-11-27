@@ -55,6 +55,8 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
     private List<int> ghost_indexes = new List<int>();
     private List<int> alien_position_indexes = new List<int>();
     private float fade_seconds = 2.8f;
+    bool stop_coroutine = false;
+    bool first_exec = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,14 +76,18 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         alien_indexes.Clear();
         ghost_indexes.Clear();
         alien_position_indexes.Clear();
-        StopCoroutine(SwapButtonImageAtIdx(0, false));
+        alien_idx = 0;
+        aliens_in_captcha = 3;
+        stop_coroutine = false;
         button_verify.GetComponent<Button>().enabled = true;
         for (int i = 0; i < 9; i++)
         {
             o_button[i] = GameObject.Find(button_names[i]);
+            o_button[i].GetComponent<Image>().color = new Vector4(1f,1f,1f,1f);
             b_button[i] = o_button[i].GetComponent<Button>();
+            b_button[i].enabled = true;
             int button_idx = i;
-            b_button[i].onClick.AddListener(() => {HandleButtonClick(button_idx);});
+            if (first_exec == true) b_button[i].onClick.AddListener(() => {HandleButtonClick(button_idx);});
             button_verify.GetComponent<Button>().onClick.AddListener(HandleVerifyClick);
 
             idx_is_alien[i] = false;
@@ -109,10 +115,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
             o_button[alien_position_indexes[i]].GetComponent<Image>().sprite = alien_sprites[i];
             alien_idx++;
         }
-
-        aliens_in_captcha = 3;
-        border_sprite = Resources.Load<Sprite>("CaptchaSprites/border_full");
-
+        first_exec = false;
 
 
         if (alien_indexes[0] == 55)
@@ -160,6 +163,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         float yield_wait_time = fade_seconds / 100f;
         for (int i = 0; i < 100; i++)
         {
+            if (stop_coroutine) yield break;
             o_button[b_idx].GetComponent<Image>().color = new Vector4(1f,1f,1f,(1f-(float)i/100f));
             yield return new WaitForSeconds(yield_wait_time);
         }
@@ -187,6 +191,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         }
         for (int i = 0; i < 100; i++)
         {
+            if (stop_coroutine) yield break;
             o_button[b_idx].GetComponent<Image>().color = new Vector4(1f,1f,1f,(float)i/100f);
             yield return new WaitForSeconds(yield_wait_time);
         }
@@ -204,11 +209,12 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
     
     private IEnumerator LoseGame()
     {
+        stop_coroutine = true;
         yield return new WaitForSeconds(0.2f);
         CaptchaMinigameCanvas.SetActive(false);
         FailCanvas.SetActive(true);
         WinCanvas.SetActive(false);
-        yield return new WaitForSeconds(5.4f);
+        yield return new WaitForSeconds(0.5f);
         CaptchaMinigameCanvas.SetActive(true);
         FailCanvas.SetActive(false);
         WinCanvas.SetActive(false);
