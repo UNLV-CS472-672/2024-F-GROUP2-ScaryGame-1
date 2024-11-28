@@ -34,7 +34,7 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateMinigameCompletionStatus(PlayerTransform.position);
+        //UpdateMinigameCompletionStatus(PlayerTransform.position);
 
         // Check if the M key is pressed
         if (Input.GetKey(KeyCode.M))
