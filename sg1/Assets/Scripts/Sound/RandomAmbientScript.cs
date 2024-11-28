@@ -6,7 +6,7 @@ public class RandomAmbientSound : MonoBehaviour
     public AudioClip[] ambientClips; // Array to hold the ambient audio clips
     public float minDelay = 5f; // Minimum delay between sounds
     public float maxDelay = 15f; // Maximum delay between sounds
-    public float minVolume = 0.5f; // Minimum volume for each clip
+    public float minVolume = 0.7f; // Minimum volume for each clip
     public float maxVolume = 1.0f; // Maximum volume for each clip
 
     private float delayTimer;
