@@ -22,6 +22,10 @@ public class AntagonistProximityAlert : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        // Adjust volumes based on master volume
+        constantSound.volume = AudioSettingsManager.MasterVolume;
+        proximitySound.volume = AudioSettingsManager.MasterVolume;
+
         // Check if the player is within alert distance
         if (distanceToPlayer <= alertDistance && !isPlayerClose)
         {
@@ -30,7 +34,6 @@ public class AntagonistProximityAlert : MonoBehaviour
             proximitySound.Play();
             isPlayerClose = true; // Mark player as close
         }
-        // If the player moves out of range, restart the ghost sound
         else if (distanceToPlayer > alertDistance && isPlayerClose)
         {
             // Restart the ghost sound and stop the proximity alert if it was playing
@@ -42,4 +45,5 @@ public class AntagonistProximityAlert : MonoBehaviour
             isPlayerClose = false; // Mark player as not close
         }
     }
+
 }

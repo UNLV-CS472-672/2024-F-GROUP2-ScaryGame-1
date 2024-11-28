@@ -286,6 +286,7 @@ public class OptionsMenuTitle : MonoBehaviour
     void InitializeVolumeSettings()
     {
         // Load saved volume or use default
+        AudioSettingsManager.MasterVolume = PlayerPrefs.GetFloat("MasterVolume", defaultVolume);
         currentVolume = PlayerPrefs.GetFloat("MasterVolume", defaultVolume);
 
         // Configure slider
@@ -328,18 +329,16 @@ public class OptionsMenuTitle : MonoBehaviour
 
     void ApplyVolumeSettings()
     {
-        // Update the current volume to match the slider
-        currentVolume = volumeSlider.value;
+        // Update the global master volume
+        AudioSettingsManager.MasterVolume = volumeSlider.value;
 
-        // Save the volume to PlayerPrefs
-        PlayerPrefs.SetFloat("MasterVolume", currentVolume);
+        // Save the master volume to PlayerPrefs
+        PlayerPrefs.SetFloat("MasterVolume", AudioSettingsManager.MasterVolume);
         PlayerPrefs.Save();
 
         // Disable the Apply button after saving
         volumeApplyButton.interactable = false;
-
-        // Notify AudioManager
-        //AudioManager.Instance?.SetMasterVolume(currentVolume);
     }
+
 
 }

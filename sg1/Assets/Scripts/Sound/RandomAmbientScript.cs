@@ -33,8 +33,8 @@ public class RandomAmbientSound : MonoBehaviour
             // Pick a random clip from the array
             audioSource.clip = ambientClips[Random.Range(0, ambientClips.Length)];
 
-            // Set a random volume within the specified range
-            audioSource.volume = Random.Range(minVolume, maxVolume);
+            // Set a random volume within the specified range, adjusted by the master volume
+            audioSource.volume = Random.Range(minVolume, maxVolume) * AudioSettingsManager.MasterVolume;
 
             audioSource.Play();
 
