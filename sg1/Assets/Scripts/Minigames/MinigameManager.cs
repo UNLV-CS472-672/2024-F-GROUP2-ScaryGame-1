@@ -9,8 +9,7 @@ public class MinigameManager : MonoBehaviour
     public List<GameObject> miniGameObjects; // List of GameObjects with mini-game components
     private List<IMiniGame> miniGames = new List<IMiniGame>();
 
-    static public List<Vector3> miniGamePositions = new List<Vector3>();
-
+    public static List<Vector3> miniGamePositions = new List<Vector3>();
 
     public int completedMiniGames = 0;
 

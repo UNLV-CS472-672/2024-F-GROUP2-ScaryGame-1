@@ -14,7 +14,6 @@ public class MinigameInteraction : MonoBehaviour
     void Start()
     {
         MinigameManager.miniGamePositions.Add(this.transform.position);
-        //Debug.Log("pos: " + this.transform.position + "\n");
     }
 
     void Update()
