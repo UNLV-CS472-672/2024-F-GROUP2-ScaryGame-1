@@ -54,7 +54,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
     private List<int> alien_indexes = new List<int>();
     private List<int> ghost_indexes = new List<int>();
     private List<int> alien_position_indexes = new List<int>();
-    private float fade_seconds = 2.8f;
+    private float fade_seconds = 1.8f;
     bool stop_coroutine = false;
     bool first_exec = true;
 
@@ -115,12 +115,6 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
             alien_idx++;
         }
         first_exec = false;
-
-
-        if (alien_indexes[0] == 55)
-        {
-            CompleteMiniGame();
-        }
     }
 
     private void HandleButtonClick(int b_idx)
