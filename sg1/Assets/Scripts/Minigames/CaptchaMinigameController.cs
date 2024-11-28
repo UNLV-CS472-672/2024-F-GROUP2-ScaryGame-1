@@ -70,6 +70,11 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         
     }
 
+    void OnEnable()
+    {
+        SetupGame();
+    }
+
     void SetupGame()
     {
         // You know what, I'm not even going to write actual documentation for this because nobody wants to read this. This is horrifying
