@@ -4108,7 +4108,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0, y: 0.012188975, z: 0.05490196, w: 1}
+      - m_Value: {x: 0, y: 0.02437795, z: 0.10980392, w: 1}
         m_Name: Particle color
         m_Overridden: 1
     m_Uint:
@@ -4172,7 +4172,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
