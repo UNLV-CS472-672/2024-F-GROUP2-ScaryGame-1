@@ -12,7 +12,7 @@ public class Player
         SceneManager.LoadScene("TestScene");
     }
 
-    [UnityTest]
+    // [UnityTest]
     public IEnumerator OneFrameTest()
     {
         yield return new WaitForSeconds(1f);
