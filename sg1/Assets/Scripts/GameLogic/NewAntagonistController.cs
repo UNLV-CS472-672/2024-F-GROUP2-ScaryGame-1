@@ -164,6 +164,7 @@ public class NewAntagonistController : MonoBehaviour
     }
     public IEnumerator Avoid()
     {
+        if (IsInSaltRadius()) yield break;
         yield return StartCoroutine(Glitch());
         // try to find a new position 10 times
         for(int i = 0; i < 10; i++)
