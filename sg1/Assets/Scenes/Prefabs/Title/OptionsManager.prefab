@@ -47,12 +47,18 @@ MonoBehaviour:
   optionsCanvas: {fileID: 0}
   mainPanel: {fileID: 0}
   sensitivityPanel: {fileID: 0}
+  volumePanel: {fileID: 0}
   sensitivityButton: {fileID: 0}
+  volumeButton: {fileID: 0}
   backButtonMainPanel: {fileID: 0}
   backButtonSensitivityPanel: {fileID: 0}
+  backButtonVolumePanel: {fileID: 0}
   sensitivityXSlider: {fileID: 0}
   sensitivityYSlider: {fileID: 0}
+  volumeSlider: {fileID: 0}
   sensitivityXInputField: {fileID: 0}
   sensitivityYInputField: {fileID: 0}
+  volumeInputField: {fileID: 0}
   sensitivityApplyButton: {fileID: 0}
   sensitivitySetToDefaultButton: {fileID: 0}
+  volumeApplyButton: {fileID: 0}

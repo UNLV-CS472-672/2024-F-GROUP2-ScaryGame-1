@@ -34,7 +34,7 @@ public class OptionsMenuTitle : MonoBehaviour
     private float tempYawSensitivity;
 
     // Volume values
-    private const float defaultVolume = 0.5f;
+    private const float defaultVolume = 1.0f;
     private float currentVolume;
 
     // Flag to track if changes were applied
@@ -67,6 +67,7 @@ public class OptionsMenuTitle : MonoBehaviour
     public void Initialize()
     {
         InitializeSensitivitySettings();
+        InitializeVolumeSettings();
         AddButtonListeners();
         HideAllPanels();
         UpdateApplyButtonState();

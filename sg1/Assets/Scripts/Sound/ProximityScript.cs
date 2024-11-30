@@ -14,8 +14,15 @@ public class AntagonistProximityAlert : MonoBehaviour
         // Ensure the constant sound starts playing
         if (!constantSound.isPlaying)
         {
+            AudioSettingsManager.RegisterAudioSource(constantSound);
             constantSound.Play();
         }
+    }
+
+    void OnDestroy()
+    {
+        AudioSettingsManager.UnregisterAudioSource(constantSound);
+        AudioSettingsManager.UnregisterAudioSource(proximitySound);
     }
 
     void Update()
@@ -31,6 +38,8 @@ public class AntagonistProximityAlert : MonoBehaviour
         {
             // Stop the ghost sound and play the proximity alert sound
             constantSound.Stop();
+
+            AudioSettingsManager.RegisterAudioSource(proximitySound);
             proximitySound.Play();
             isPlayerClose = true; // Mark player as close
         }

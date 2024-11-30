@@ -13,6 +13,12 @@ public class PlayerFootsteps : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         stepTimer = stepInterval;
+        AudioSettingsManager.RegisterAudioSource(footstepSource);
+    }
+
+    void OnDestroy()
+    {
+        AudioSettingsManager.UnregisterAudioSource(footstepSource);
     }
 
     void Update()

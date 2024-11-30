@@ -16,14 +16,22 @@ public class PauseMenu : MonoBehaviour
     private Vector3 savedPosition;
     private Quaternion savedRotation;
 
+    // Volume panel references
+    public GameObject volumePanel;
+    public Slider volumeSlider;
+    public InputField volumeInputField;
+    public Button volumeApplyButton;
+    public Button backButtonVolumePanel;
+
     private OptionsMenuTitle optionsMenuTitle; // Reference to the OptionsMenuTitle script
 
     void Start()
     {
+        // Button listeners
         resumeButton.onClick.AddListener(Resume);
         optionsButton.onClick.AddListener(OpenOptions);
         backToTitleButton.onClick.AddListener(BackToTitle);
-        quitButton.onClick.AddListener(QuitGame); // Add listener for Quit button
+        quitButton.onClick.AddListener(QuitGame);
 
         pauseMenuUI.SetActive(false);
 
@@ -45,6 +53,12 @@ public class PauseMenu : MonoBehaviour
             optionsMenuTitle.sensitivityApplyButton = optionsMenuTitle.sensitivityPanel.transform.Find("SensApplyButton").GetComponent<Button>();
             optionsMenuTitle.sensitivitySetToDefaultButton = optionsMenuTitle.sensitivityPanel.transform.Find("SensResetButton").GetComponent<Button>();
             optionsMenuTitle.backButtonSensitivityPanel = optionsMenuTitle.sensitivityPanel.transform.Find("SensBackButton").GetComponent<Button>();
+            optionsMenuTitle.volumePanel = optionsCanvas.transform.Find("VolumePanel").gameObject;
+            optionsMenuTitle.volumeButton = optionsMenuTitle.mainPanel.transform.Find("VolumeButton").GetComponent<Button>();
+            optionsMenuTitle.volumeSlider = optionsMenuTitle.volumePanel.transform.Find("VolumeSlider").GetComponent<Slider>();
+            optionsMenuTitle.volumeInputField = optionsMenuTitle.volumePanel.transform.Find("VolumeInputField").GetComponent<InputField>();
+            optionsMenuTitle.volumeApplyButton = optionsMenuTitle.volumePanel.transform.Find("VolumeApplyButton").GetComponent<Button>();
+            optionsMenuTitle.backButtonVolumePanel = optionsMenuTitle.volumePanel.transform.Find("VolumeBackButton").GetComponent<Button>();
 
             optionsMenuTitle.Initialize(); // Call Initialize instead of Start
         }
@@ -117,6 +131,7 @@ public class PauseMenu : MonoBehaviour
             optionsMenuTitle.mainPanel.SetActive(true);
             // Optionally, ensure other panels are set to their initial states
             optionsMenuTitle.sensitivityPanel.SetActive(false);
+            optionsMenuTitle.volumePanel.SetActive(false);
         }
     }
 
