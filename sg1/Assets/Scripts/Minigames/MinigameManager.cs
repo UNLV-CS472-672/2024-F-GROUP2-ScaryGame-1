@@ -29,6 +29,8 @@ public class MinigameManager : MonoBehaviour
 
     void Start()
     {
+        finalObjectToOpen.SetActive(false); // Make sure portal is off when game starts
+
         foreach (var gameObject in miniGameObjects)
         {
             IMiniGame miniGame = gameObject.GetComponent<IMiniGame>();
