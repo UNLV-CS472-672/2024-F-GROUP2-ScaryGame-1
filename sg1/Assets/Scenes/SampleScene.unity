@@ -3309,6 +3309,8 @@ MonoBehaviour:
   testing: {fileID: 11400000, guid: 1d77b9fba2532fc4086acde8a28cca6c, type: 2}
   floorsalt_object: {fileID: 592972488}
   Player: {fileID: 1938972373}
+  healthSlider: {fileID: 446605}
+  healthPackStrength: 50
 --- !u!1 &1236820643
 GameObject:
   m_ObjectHideFlags: 0
