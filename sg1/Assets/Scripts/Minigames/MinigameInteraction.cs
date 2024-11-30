@@ -11,6 +11,11 @@ public class MinigameInteraction : MonoBehaviour
 
     public HelpInfo helpInfo; // used to display help message
 
+    void Start()
+    {
+        MinigameManager.miniGamePositions.Add(this.transform.position);
+    }
+
     void Update()
     {
         // Check for input only if the player is nearby and mini-game is closed

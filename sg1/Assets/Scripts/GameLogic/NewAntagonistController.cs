@@ -104,6 +104,13 @@ public class NewAntagonistController : MonoBehaviour
                 refindTimer = 0;
             }
         }
+
+        // Makes the antagonist appear as though it is floating up and down, using a Sin function taking Time as an input
+        this.gameObject.transform.position = new Vector3(
+            this.gameObject.transform.position.x,
+            (Mathf.Sin(Time.realtimeSinceStartup * 2f) * 0.1f) - 0.1f,
+            this.gameObject.transform.position.z
+        );
     }
 
     bool IsInSaltRadius()
