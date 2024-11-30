@@ -13,6 +13,12 @@ public class PlayerFootsteps : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         stepTimer = stepInterval;
+        AudioSettingsManager.RegisterAudioSource(footstepSource);
+    }
+
+    void OnDestroy()
+    {
+        AudioSettingsManager.UnregisterAudioSource(footstepSource);
     }
 
     void Update()
@@ -36,6 +42,9 @@ public class PlayerFootsteps : MonoBehaviour
         {
             // Select a random clip from the array
             AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
+            
+            // Apply master volume
+            footstepSource.volume = AudioSettingsManager.MasterVolume;
             footstepSource.PlayOneShot(clip);
         }
     }
