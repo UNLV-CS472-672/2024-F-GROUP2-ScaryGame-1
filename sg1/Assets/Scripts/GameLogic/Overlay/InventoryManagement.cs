@@ -9,6 +9,9 @@ public class InventoryManagement : MonoBehaviour
     public GameObject floorsalt_object;
     public Transform Player;
 
+    public HealthSlider healthSlider;
+    public int healthPackStrength = 50;
+
     private int currentSlotIndex = 0; 
 
     // Clearing All Slots when Game Starts
@@ -107,6 +110,11 @@ public class InventoryManagement : MonoBehaviour
             //create a new instance of floor salt, and set it to be active (visible)
             GameObject fs = Instantiate(floorsalt_object, floorsalt_loc, transform.rotation);
             fs.SetActive(true);
+        }
+        if (usedItem.itemName == "Healthpack")
+        {
+            healthSlider.Heal(healthPackStrength);
+            Debug.Log($"Healed player for {healthPackStrength}. Current health: {healthSlider.currentHealth}");
         }
     }
 }
