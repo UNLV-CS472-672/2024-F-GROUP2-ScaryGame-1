@@ -7,15 +7,21 @@ public class OptionsMenuTitle : MonoBehaviour
     public GameObject optionsCanvas;
     public GameObject mainPanel;
     public GameObject sensitivityPanel;
+    public GameObject volumePanel;
     public Button sensitivityButton;
+    public Button volumeButton;
     public Button backButtonMainPanel;
     public Button backButtonSensitivityPanel;
+    public Button backButtonVolumePanel;
     public Slider sensitivityXSlider;
     public Slider sensitivityYSlider;
+    public Slider volumeSlider;
     public InputField sensitivityXInputField;
     public InputField sensitivityYInputField;
+    public InputField volumeInputField;
     public Button sensitivityApplyButton;
     public Button sensitivitySetToDefaultButton;
+    public Button volumeApplyButton;
 
     // Default sensitivity values
     private float defaultPitchSensitivity = 1.5f;
@@ -26,6 +32,10 @@ public class OptionsMenuTitle : MonoBehaviour
     private float currentYawSensitivity;
     private float tempPitchSensitivity;
     private float tempYawSensitivity;
+
+    // Volume values
+    private const float defaultVolume = 0.5f;
+    private float currentVolume;
 
     // Flag to track if changes were applied
     private bool changesApplied = false;
@@ -46,6 +56,7 @@ public class OptionsMenuTitle : MonoBehaviour
     {
         // Initialize sensitivity settings and add button listeners
         InitializeSensitivitySettings();
+        InitializeVolumeSettings();
         AddButtonListeners();
         // Hide all panels initially
         HideAllPanels();
@@ -93,6 +104,9 @@ public class OptionsMenuTitle : MonoBehaviour
         sensitivitySetToDefaultButton.onClick.AddListener(SetSensitivityToDefault);
         backButtonMainPanel.onClick.AddListener(HideOptionsCanvas);
         backButtonSensitivityPanel.onClick.AddListener(BackToMainPanel);
+        volumeButton.onClick.AddListener(ShowVolumePanel);
+        backButtonVolumePanel.onClick.AddListener(BackToMainPanelFromVolume);
+        volumeApplyButton.onClick.AddListener(ApplyVolumeSettings);
     }
 
     void HideAllPanels()
@@ -102,6 +116,7 @@ public class OptionsMenuTitle : MonoBehaviour
         mainPanel.SetActive(false);
         sensitivityPanel.SetActive(false);
         sensitivitySetToDefaultButton.gameObject.SetActive(false);
+        volumePanel.SetActive(false);
     }
 
     void ToggleOptionsCanvas()
@@ -132,6 +147,27 @@ public class OptionsMenuTitle : MonoBehaviour
         UpdateApplyButtonState();
     }
 
+    void ShowVolumePanel()
+    {
+        // Hide the main panel
+        mainPanel.SetActive(false);
+
+        // Reload the saved volume setting
+        float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        AudioSettingsManager.MasterVolume = savedVolume;
+
+        // Update the slider and input field to reflect the saved volume
+        volumeSlider.value = savedVolume;
+        volumeInputField.text = (savedVolume * 100).ToString("F0");
+
+        // Disable the Apply button (no changes yet)
+        volumeApplyButton.interactable = false;
+
+        // Show the volume panel
+        volumePanel.SetActive(true);
+    }
+
+
     void BackToMainPanel()
     {
         // Revert changes if they were not applied
@@ -146,6 +182,20 @@ public class OptionsMenuTitle : MonoBehaviour
         sensitivityPanel.SetActive(false);
         mainPanel.SetActive(true);
         UpdateApplyButtonState();
+    }
+
+    void BackToMainPanelFromVolume()
+    {
+        // Revert the slider and input field to the saved volume
+        volumeSlider.value = currentVolume;
+        volumeInputField.text = (currentVolume * 100).ToString("F0");
+
+        // Disable the Apply button since no changes are pending
+        volumeApplyButton.interactable = false;
+
+        // Hide the volume panel and show the main panel
+        volumePanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
     void HideOptionsCanvas()
@@ -243,5 +293,67 @@ public class OptionsMenuTitle : MonoBehaviour
         // Check if the sensitivity values have changed to update the set-to-default button.
         CheckIfSensitivityChanged();
     }
+
+    void InitializeVolumeSettings()
+    {
+        // Load saved volume or use default
+        AudioSettingsManager.MasterVolume = PlayerPrefs.GetFloat("MasterVolume", defaultVolume);
+        currentVolume = PlayerPrefs.GetFloat("MasterVolume", defaultVolume);
+
+        // Configure slider
+        volumeSlider.minValue = 0.0f;
+        volumeSlider.maxValue = 1.0f;
+        volumeSlider.value = currentVolume;
+
+        // Configure input field
+        volumeInputField.text = (currentVolume * 100).ToString("F0");
+
+        // Disable Apply button initially
+        volumeApplyButton.interactable = false;
+
+        // Add listeners
+        volumeSlider.onValueChanged.AddListener(OnVolumeSliderChanged);
+        volumeInputField.onEndEdit.AddListener(OnVolumeInputChanged);
+    }
+
+    void OnVolumeSliderChanged(float value)
+    {
+        // Update input field to reflect slider value
+        volumeInputField.text = (value * 100).ToString("F0");
+
+        // Enable the Apply button if the value has changed
+        volumeApplyButton.interactable = !Mathf.Approximately(value, currentVolume);
+    }
+
+    void OnVolumeInputChanged(string value)
+    {
+        if (float.TryParse(value, out float parsedValue))
+        {
+            // Clamp value to 0-100 and set slider
+            parsedValue = Mathf.Clamp(parsedValue, 0, 100);
+            volumeSlider.value = parsedValue / 100f;
+
+            // Enable the Apply button if the value has changed
+            volumeApplyButton.interactable = !Mathf.Approximately(volumeSlider.value, currentVolume);
+        }
+    }
+
+    void ApplyVolumeSettings()
+    {
+        // Update the global master volume
+        AudioSettingsManager.MasterVolume = volumeSlider.value;
+
+        // Save the master volume to PlayerPrefs
+        PlayerPrefs.SetFloat("MasterVolume", AudioSettingsManager.MasterVolume);
+        PlayerPrefs.Save();
+
+        // Update UI to reflect the saved value
+        volumeSlider.value = AudioSettingsManager.MasterVolume;
+        volumeInputField.text = (AudioSettingsManager.MasterVolume * 100).ToString("F0");
+
+        // Disable the Apply button after saving
+        volumeApplyButton.interactable = false;
+    }
+
 
 }
