@@ -1545,8 +1545,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5335146, y: 1.2491815, z: 5.6766386}
-  m_Center: {x: 0.2667577, y: -0.12458985, z: -0.20457375}
+  m_Size: {x: 2.351316, y: 1.9586076, z: 5.6766386}
+  m_Center: {x: 0.6756595, y: 0.23012272, z: -0.20457375}
 --- !u!1 &117138
 GameObject:
   m_ObjectHideFlags: 0
@@ -7352,6 +7352,7 @@ GameObject:
   - component: {fileID: 432752}
   - component: {fileID: 3332752}
   - component: {fileID: 2332752}
+  - component: {fileID: 4926933785889756899}
   m_Layer: 0
   m_Name: Wall_Bed_01
   m_TagString: Untagged
@@ -7427,6 +7428,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4926933785889756899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.413682, y: 5.498033, z: 0.57737154}
+  m_Center: {x: -0.20684056, y: -3.0010247, z: 1.0287873}
 --- !u!1 &132754
 GameObject:
   m_ObjectHideFlags: 0
@@ -30177,6 +30199,7 @@ GameObject:
   - component: {fileID: 3495490197627291240}
   - component: {fileID: 8077698584247447616}
   - component: {fileID: 4598481976250227562}
+  - component: {fileID: 4140398904390467295}
   m_Layer: 0
   m_Name: Wall_Bed_01
   m_TagString: Untagged
@@ -30252,6 +30275,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4140398904390467295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488646572483810806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.413682, y: 5.498032, z: 0.57737154}
+  m_Center: {x: -0.20684056, y: -3.0010395, z: 1.0287899}
 --- !u!1 &2493100372021753471
 GameObject:
   m_ObjectHideFlags: 0
@@ -37589,7 +37633,7 @@ Transform:
   m_GameObject: {fileID: 4013635417059595731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9987693, y: -7.901129, z: 22.443287}
+  m_LocalPosition: {x: -3.9987693, y: -7.857, z: 22.443287}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38204,6 +38248,8 @@ GameObject:
   - component: {fileID: 223236131328887731}
   - component: {fileID: 6688636957951136439}
   - component: {fileID: 6748769232816001097}
+  - component: {fileID: 3156471281075974064}
+  - component: {fileID: 1735684292982983856}
   m_Layer: 0
   m_Name: Wall_Bed_01
   m_TagString: Untagged
@@ -38279,6 +38325,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3156471281075974064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105038489958198313}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.413682, y: 5.498032, z: 0.57737154}
+  m_Center: {x: -0.20683865, y: -3.0010395, z: 1.0287868}
+--- !u!114 &1735684292982983856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105038489958198313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_Size: {x: 2, y: 10, z: 1}
+  m_Center: {x: 0, y: -6, z: 1}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4122303852691101967
 GameObject:
   m_ObjectHideFlags: 0
@@ -47956,6 +48040,8 @@ GameObject:
   - component: {fileID: 2286191311249128064}
   - component: {fileID: 5088630275849356134}
   - component: {fileID: 4562004119677276480}
+  - component: {fileID: 4483217324164023063}
+  - component: {fileID: 155838809113856890}
   m_Layer: 0
   m_Name: Wall_Bed_01
   m_TagString: Untagged
@@ -48031,6 +48117,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4483217324164023063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981013765815428335}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.413682, y: 5.498032, z: 0.57737154}
+  m_Center: {x: -0.20684247, y: -3.0010357, z: 1.0287904}
+--- !u!114 &155838809113856890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981013765815428335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_Size: {x: 2, y: 10, z: 1}
+  m_Center: {x: 0, y: 0, z: 1}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4992745239633234218
 GameObject:
   m_ObjectHideFlags: 0
@@ -57365,7 +57489,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: ff88f714c4fe1724eb956de978430228, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0b6b2c61b673391418cedc1038db441e, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5880087704064450271
 GameObject:
