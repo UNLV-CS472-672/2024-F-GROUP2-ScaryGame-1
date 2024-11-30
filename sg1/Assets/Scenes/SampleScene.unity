@@ -5348,7 +5348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2270684186737072947, guid: 73f87547972ef734081a64fbc8849269, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8103644161409177981, guid: 73f87547972ef734081a64fbc8849269, type: 3}
       propertyPath: player
@@ -5620,15 +5620,21 @@ MonoBehaviour:
   optionsCanvas: {fileID: 595442841}
   mainPanel: {fileID: 193048166}
   sensitivityPanel: {fileID: 2076775700}
+  volumePanel: {fileID: 0}
   sensitivityButton: {fileID: 592369890}
+  volumeButton: {fileID: 0}
   backButtonMainPanel: {fileID: 207949868}
   backButtonSensitivityPanel: {fileID: 1879266285}
+  backButtonVolumePanel: {fileID: 0}
   sensitivityXSlider: {fileID: 1651279762}
   sensitivityYSlider: {fileID: 384579662}
+  volumeSlider: {fileID: 0}
   sensitivityXInputField: {fileID: 1794405734}
   sensitivityYInputField: {fileID: 1171865176}
+  volumeInputField: {fileID: 0}
   sensitivityApplyButton: {fileID: 685981592}
   sensitivitySetToDefaultButton: {fileID: 821619853}
+  volumeApplyButton: {fileID: 0}
 --- !u!1 &1713376848
 GameObject:
   m_ObjectHideFlags: 0
