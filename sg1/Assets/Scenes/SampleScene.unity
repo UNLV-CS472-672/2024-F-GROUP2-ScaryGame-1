@@ -224,11 +224,6 @@ MonoBehaviour:
   healthSlider: {fileID: 446604}
   maxHealth: 100
   currentHealth: 0
---- !u!1 &10998320 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4540330923013715882, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &14765319
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,11 +303,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14765319}
   m_CullTransparentMesh: 1
---- !u!1 &17863820 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 894055164287337584, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &20507642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,11 +1013,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228538911}
   m_CullTransparentMesh: 1
---- !u!1 &275298881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2085702007841502227, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &300069097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,11 +1261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &409106425 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2630057267316352008, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &413272194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4706417343219809715, guid: 4af22f0b251f611418f010c913a3551a, type: 3}
@@ -2792,11 +2772,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &942576259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4231732034725455989, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &963371971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3304,11 +3279,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5842209661886809309, guid: 33715a67da7e50d49859c476c3534280, type: 3}
   m_PrefabInstance: {fileID: 6679212165493842084}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1201029477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3281040765472985102, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1217178970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,11 +3393,6 @@ MonoBehaviour:
   Player: {fileID: 1938972373}
   healthSlider: {fileID: 446605}
   healthPackStrength: 50
---- !u!1 &1230485621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 237245489195323959, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1236820643
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,11 +3947,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284066195}
   m_CullTransparentMesh: 1
---- !u!1 &1304846730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 493646700168213534, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306408877
 GameObject:
   m_ObjectHideFlags: 0
@@ -5242,11 +5202,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1621600506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2855035214395075122, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1638509687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5606,6 +5561,11 @@ MonoBehaviour:
   optionsButton: {fileID: 69746085}
   backToTitleButton: {fileID: 1446117716}
   quitButton: {fileID: 1183353160}
+  volumePanel: {fileID: 0}
+  volumeSlider: {fileID: 0}
+  volumeInputField: {fileID: 0}
+  volumeApplyButton: {fileID: 0}
+  backButtonVolumePanel: {fileID: 0}
 --- !u!4 &1698602807
 Transform:
   m_ObjectHideFlags: 0
@@ -5970,28 +5930,6 @@ MonoBehaviour:
     _prefab: Assets/Scenes/Prefabs/Antagonist/NewAntagonist.prefab
   - _gameObject: {fileID: 1198967237}
     _prefab: Assets/Scenes/Prefabs/Map Core.prefab
-  - _gameObject: {fileID: 275298881}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Decorative
-      elements/shelf.prefab
-  - _gameObject: {fileID: 2112831011}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Decorative
-      elements/shelf.prefab
-  - _gameObject: {fileID: 1230485621}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Machines/Battery.prefab
-  - _gameObject: {fileID: 10998320}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Machines/Capacitor.prefab
-  - _gameObject: {fileID: 1304846730}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Machines/storage_container_small.prefab
-  - _gameObject: {fileID: 942576259}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Machines/storage_container_small.prefab
-  - _gameObject: {fileID: 409106425}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Machines/vending_machine.prefab
-  - _gameObject: {fileID: 17863820}
-    _prefab: Assets/Scenes/Prefabs/Rooms/Sci-Fi Styled Modular Pack/Prefabs/Machines/vending_machine.prefab
-  - _gameObject: {fileID: 1201029477}
-    _prefab: Assets/Scenes/Prefabs/Rooms/_3D Scifi Kit Starter Kit_HD/_Prefabs/Walls/Wall_Gear_01_Half.prefab
-  - _gameObject: {fileID: 1621600506}
-    _prefab: Assets/Scenes/Prefabs/Rooms/_3D Scifi Kit Starter Kit_HD/_Prefabs/Stuff/Intercom_02.prefab
   - _gameObject: {fileID: 129393533}
     _prefab: Assets/Scenes/Prefabs/Minigames/MinigameManager.prefab
   - _gameObject: {fileID: 1868486682}
@@ -6729,11 +6667,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   empty: 1
   icon: {fileID: 0}
---- !u!1 &2112831011 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2128459036505080789, guid: 33715a67da7e50d49859c476c3534280, type: 3}
-  m_PrefabInstance: {fileID: 6679212165493842084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2114527297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3570673063139267787, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
