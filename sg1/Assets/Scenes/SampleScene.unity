@@ -6879,6 +6879,22 @@ PrefabInstance:
       propertyPath: AntagonistTransform
       value: 
       objectReference: {fileID: 1554734359}
+    - target: {fileID: 3858423232864590593, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858423232864590593, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Name
+      value: Turbulence intensity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858423232864590593, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858423232864590593, guid: 33715a67da7e50d49859c476c3534280, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3891878772849753429, guid: 33715a67da7e50d49859c476c3534280, type: 3}
       propertyPath: AntagonistTransform
       value: 
