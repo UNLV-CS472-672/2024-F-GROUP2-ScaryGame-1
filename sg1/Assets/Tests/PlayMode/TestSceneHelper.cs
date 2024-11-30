@@ -8,6 +8,9 @@ public class TestSceneHelper : MonoBehaviour
     public GameObject pauseMenuManagerGameObj; // Inactive
     public GameObject pauseMenuGameObj; // Inactive, only active when paused
     public GameObject optionsCanvasGameObj; // Inactive, only active when paused and in options
+    public GameObject sequenceMinigameCanvasGameObj;
+    public GameObject rotatingDialsGameObj;
+    public GameObject healthSliderGameObj; 
 
     /*
     public void ActivateAll()

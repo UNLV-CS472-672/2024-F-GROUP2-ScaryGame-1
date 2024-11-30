@@ -74,7 +74,7 @@ public class RotateDialsMinigame : MonoBehaviour, IMiniGame
     }
 
     // Returns true if all dials are in correct rangel
-    bool StopDials()
+    public bool StopDials()
     {
         foreach(DialController dial in dials)
         {
