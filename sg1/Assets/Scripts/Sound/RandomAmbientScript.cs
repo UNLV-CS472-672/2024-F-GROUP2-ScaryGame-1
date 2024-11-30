@@ -13,7 +13,13 @@ public class RandomAmbientSound : MonoBehaviour
 
     void Start()
     {
+        AudioSettingsManager.RegisterAudioSource(audioSource);
         PlayRandomAmbientClip();
+    }
+
+    void OnDestroy()
+    {
+        AudioSettingsManager.UnregisterAudioSource(audioSource);
     }
 
     void Update()
