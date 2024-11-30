@@ -6,13 +6,16 @@ public class InventoryManagement : MonoBehaviour
     public InventorySlot[] hotbar;
     public InventoryItem testing;
 
-    public GameObject floorsalt_object;
+    public GameObject floorsalt_object; // Existing object for floor salt
+    public GameObject hand_salt;       // New object for salt in the player's hand
+    public GameObject hand_health;     // New object for health pack in the player's hand
     public Transform Player;
 
     public HealthSlider healthSlider;
     public int healthPackStrength = 50;
 
-    private int currentSlotIndex = 0; 
+    private int currentSlotIndex = 0;
+    private GameObject currentlyEquippedObject; // Tracks the currently equipped object in hand
 
     // Clearing All Slots when Game Starts
     void Start()
@@ -36,6 +39,7 @@ public class InventoryManagement : MonoBehaviour
             {
                 currentSlotIndex = i - 1; // Map key 1 to slot 0, key 2 to slot 1, etc.
                 UpdateHotbarSelection();
+                UpdateEquippedObject(); // Update the displayed object
                 break;
             }
         }
@@ -46,7 +50,7 @@ public class InventoryManagement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G)) // Check if the "G" key is pressed
         {
             RemoveItemFromHotBar();
-
+            UpdateEquippedObject(); // Update the displayed object
         }
     }
 
@@ -60,17 +64,46 @@ public class InventoryManagement : MonoBehaviour
         }
     }
 
+    private void UpdateEquippedObject()
+    {
+        // Disable the currently equipped object
+        if (currentlyEquippedObject != null)
+        {
+            currentlyEquippedObject.SetActive(false);
+            currentlyEquippedObject = null;
+        }
+
+        // Check if there's an item in the currently selected slot
+        if (!hotbar[currentSlotIndex].empty)
+        {
+            InventoryItem currentItem = hotbar[currentSlotIndex].getItem();
+            if (currentItem.itemName == "Salt")
+            {
+                currentlyEquippedObject = hand_salt;
+            }
+            else if (currentItem.itemName == "Healthpack")
+            {
+                currentlyEquippedObject = hand_health;
+            }
+
+            // Enable the selected item prefab
+            if (currentlyEquippedObject != null)
+            {
+                currentlyEquippedObject.SetActive(true);
+            }
+        }
+    }
 
     public void AddItemToHotBar(InventoryItem newItem)
     {
         // Check for an empty slot starting from the current index
         for (int i = 0; i < hotbar.Length; i++)
         {
-            //int index = (currentSlotIndex + i) % hotbar.Length; // Cycle through slots
-            if (hotbar[i].empty == true) // Find the first empty slot
+            if (hotbar[i].empty) // Find the first empty slot
             {
                 hotbar[i].addItem(newItem);
                 currentSlotIndex = i;
+                UpdateEquippedObject(); // Update the displayed object
                 return;
             }
         }
@@ -85,6 +118,7 @@ public class InventoryManagement : MonoBehaviour
         {
             UseItem(hotbar[currentSlotIndex].getItem());
             hotbar[currentSlotIndex].ClearSlot();
+            UpdateEquippedObject(); // Update the displayed object
             if (currentSlotIndex != 0) currentSlotIndex -= 1;
             return;
         }
@@ -100,21 +134,30 @@ public class InventoryManagement : MonoBehaviour
 
     public void UseItem(InventoryItem usedItem)
     {
-        //check if the type of item used is Salt
+        // Use the currently selected item
         if (usedItem.itemName == "Salt")
         {
-            //get the player's position and change the y value to the specific number just above the floor
-            Vector3 floorsalt_loc;
-            floorsalt_loc = Player.transform.position;
+            // Drop salt at player's feet
+            Vector3 floorsalt_loc = Player.transform.position;
             floorsalt_loc.y = -0.63f;
-            //create a new instance of floor salt, and set it to be active (visible)
-            GameObject fs = Instantiate(floorsalt_object, floorsalt_loc, transform.rotation);
+            GameObject fs = Instantiate(floorsalt_object, floorsalt_loc, Quaternion.identity);
             fs.SetActive(true);
         }
-        if (usedItem.itemName == "Healthpack")
+        else if (usedItem.itemName == "Healthpack")
         {
+            // Heal the player
             healthSlider.Heal(healthPackStrength);
             Debug.Log($"Healed player for {healthPackStrength}. Current health: {healthSlider.currentHealth}");
+        }
+
+        // Clear the current prefab if the item is consumed
+        if (usedItem.itemName == "Healthpack" || usedItem.itemName == "Salt")
+        {
+            if (currentlyEquippedObject != null)
+            {
+                currentlyEquippedObject.SetActive(false);
+                currentlyEquippedObject = null;
+            }
         }
     }
 }
