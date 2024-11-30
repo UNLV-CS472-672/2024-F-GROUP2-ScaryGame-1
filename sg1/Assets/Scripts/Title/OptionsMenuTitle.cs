@@ -154,7 +154,7 @@ public class OptionsMenuTitle : MonoBehaviour
         mainPanel.SetActive(false);
 
         // Reload the saved volume setting
-        float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        float savedVolume = PlayerPrefs.GetFloat("MasterVolume", defaultVolume);
         AudioSettingsManager.MasterVolume = savedVolume;
 
         // Update the slider and input field to reflect the saved volume
@@ -187,11 +187,19 @@ public class OptionsMenuTitle : MonoBehaviour
 
     void BackToMainPanelFromVolume()
     {
-        // Revert the slider and input field to the saved volume
-        volumeSlider.value = currentVolume;
-        volumeInputField.text = (currentVolume * 100).ToString("F0");
+        // Check if the Apply button is still interactable (indicating unsaved changes)
+        if (volumeApplyButton.interactable)
+        {
+            // Revert the slider and input field to the saved volume
+            float savedVolume = PlayerPrefs.GetFloat("MasterVolume", defaultVolume);
+            volumeSlider.value = savedVolume;
+            volumeInputField.text = (savedVolume * 100).ToString("F0");
 
-        // Disable the Apply button since no changes are pending
+            // Revert the global master volume
+            AudioSettingsManager.MasterVolume = savedVolume;
+        }
+
+        // Disable the Apply button (no changes pending)
         volumeApplyButton.interactable = false;
 
         // Hide the volume panel and show the main panel
@@ -326,7 +334,7 @@ public class OptionsMenuTitle : MonoBehaviour
         AudioSettingsManager.MasterVolume = value; 
 
         // Enable the Apply button if the value has changed
-        volumeApplyButton.interactable = !Mathf.Approximately(value, currentVolume);
+        volumeApplyButton.interactable = !Mathf.Approximately(value, PlayerPrefs.GetFloat("MasterVolume", defaultVolume));
     }
 
     void OnVolumeInputChanged(string value)
@@ -337,27 +345,28 @@ public class OptionsMenuTitle : MonoBehaviour
             parsedValue = Mathf.Clamp(parsedValue, 0, 100);
             volumeSlider.value = parsedValue / 100f;
 
-            // Enable the Apply button if the value has changed
-            volumeApplyButton.interactable = !Mathf.Approximately(volumeSlider.value, currentVolume);
+            // Update global master volume
+            AudioSettingsManager.MasterVolume = volumeSlider.value;
+
+            // Enable Apply button if the new value differs from saved value
+            volumeApplyButton.interactable = !Mathf.Approximately(volumeSlider.value, PlayerPrefs.GetFloat("MasterVolume", defaultVolume));
         }
     }
 
     void ApplyVolumeSettings()
     {
-        // Update the global master volume
-        AudioSettingsManager.MasterVolume = volumeSlider.value;
-
-        // Save the master volume to PlayerPrefs
-        PlayerPrefs.SetFloat("MasterVolume", AudioSettingsManager.MasterVolume);
+        // Save the new volume setting
+        float newVolume = volumeSlider.value;
+        AudioSettingsManager.MasterVolume = newVolume;
+        PlayerPrefs.SetFloat("MasterVolume", newVolume);
         PlayerPrefs.Save();
 
-        // Update UI to reflect the saved value
-        volumeSlider.value = AudioSettingsManager.MasterVolume;
-        volumeInputField.text = (AudioSettingsManager.MasterVolume * 100).ToString("F0");
-
-        // Disable the Apply button after saving
+        // Synchronize the UI
+        volumeSlider.value = newVolume;
+        volumeInputField.text = (newVolume * 100).ToString("F0");
         volumeApplyButton.interactable = false;
     }
+
 
 
 }
