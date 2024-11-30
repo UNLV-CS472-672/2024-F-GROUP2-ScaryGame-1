@@ -116,7 +116,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
             StartCoroutine(LoseGame());
         }
     }
-
+    /* I don't think these are used, but I am afraid to delete
     private void CloseMiniGame()
     {
         playerCanInteract = false;
@@ -136,7 +136,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         miniGameCanvas.SetActive(true);
         StartCoroutine(FlashSequence());
     }
-
+    */
     public void CompleteMiniGame()
     {
         // display win message
