@@ -322,6 +322,9 @@ public class OptionsMenuTitle : MonoBehaviour
         // Update input field to reflect slider value
         volumeInputField.text = (value * 100).ToString("F0");
 
+        // Update all AudioSources in real time
+        AudioSettingsManager.MasterVolume = value; 
+
         // Enable the Apply button if the value has changed
         volumeApplyButton.interactable = !Mathf.Approximately(value, currentVolume);
     }
