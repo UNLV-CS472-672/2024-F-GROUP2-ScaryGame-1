@@ -27,11 +27,7 @@ public class PortalTests
     public IEnumerator OnTriggerCollider_LoadsEndScene()
     {
         Portal portal = helper.portalGameObj.GetComponent<Portal>();
-        // Assert.That(portal, Is.Not.Null);
-        // Assert.That(helper.playerGameObj, Is.Not.Null);
-        // Assert.IsTrue(helper.playerGameObj.activeSelf);
         CapsuleCollider collider = helper.playerGameObj.GetComponent<CapsuleCollider>();
-        // Assert.That(collider, Is.Not.Null);
         portal.OnTriggerEnter(collider);
         yield return null;
         string sceneName = SceneManager.GetActiveScene().name;

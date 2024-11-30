@@ -15,12 +15,4 @@ public class TestSceneHelper : MonoBehaviour
     public GameObject captchaGameObj;
     public GameObject floorsaltGameObj;
     public GameObject saltGameObj;
-
-    /*
-    public void ActivateAll()
-    {
-        playerGameObj.SetActive(true);
-        ghostGameObj.SetActive(true);
-        overlayGameObj.SetActive(true);
-    }*/
 }
