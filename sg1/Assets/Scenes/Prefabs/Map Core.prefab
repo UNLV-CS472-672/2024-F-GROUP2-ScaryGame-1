@@ -7352,7 +7352,6 @@ GameObject:
   - component: {fileID: 432752}
   - component: {fileID: 3332752}
   - component: {fileID: 2332752}
-  - component: {fileID: 4926933785889756899}
   m_Layer: 0
   m_Name: Wall_Bed_01
   m_TagString: Untagged
@@ -7428,27 +7427,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4926933785889756899
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132752}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.413682, y: 5.498033, z: 0.57737154}
-  m_Center: {x: -0.20684056, y: -3.0010247, z: 1.0287873}
 --- !u!1 &132754
 GameObject:
   m_ObjectHideFlags: 0
@@ -30199,7 +30177,6 @@ GameObject:
   - component: {fileID: 3495490197627291240}
   - component: {fileID: 8077698584247447616}
   - component: {fileID: 4598481976250227562}
-  - component: {fileID: 4140398904390467295}
   m_Layer: 0
   m_Name: Wall_Bed_01
   m_TagString: Untagged
@@ -30275,27 +30252,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4140398904390467295
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2488646572483810806}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.413682, y: 5.498032, z: 0.57737154}
-  m_Center: {x: -0.20684056, y: -3.0010395, z: 1.0287899}
 --- !u!1 &2493100372021753471
 GameObject:
   m_ObjectHideFlags: 0
@@ -38248,7 +38204,6 @@ GameObject:
   - component: {fileID: 223236131328887731}
   - component: {fileID: 6688636957951136439}
   - component: {fileID: 6748769232816001097}
-  - component: {fileID: 3156471281075974064}
   - component: {fileID: 1735684292982983856}
   m_Layer: 0
   m_Name: Wall_Bed_01
@@ -38325,27 +38280,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3156471281075974064
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105038489958198313}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.413682, y: 5.498032, z: 0.57737154}
-  m_Center: {x: -0.20683865, y: -3.0010395, z: 1.0287868}
 --- !u!114 &1735684292982983856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57489,7 +57423,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0b6b2c61b673391418cedc1038db441e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ff88f714c4fe1724eb956de978430228, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5880087704064450271
 GameObject:
