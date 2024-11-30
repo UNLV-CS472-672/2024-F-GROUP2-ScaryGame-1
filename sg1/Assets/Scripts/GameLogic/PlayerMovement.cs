@@ -1,7 +1,9 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("PlayMode")]
 public class Movement : MonoBehaviour
 {
     private const float GRAVITY = 9.8f;
@@ -32,6 +34,8 @@ public class Movement : MonoBehaviour
     private Quaternion wakeUpEndRotation;
     private float wakeUpDuration = 2f; // Duration of the wake-up transition in seconds
 
+    internal IInput MyInput = new InputWrapper();
+
     void Start()
     {
         // Load sensitivity settings
@@ -50,7 +54,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         // Check if the player presses W to start the wake-up sequence
-        if (isWakingUp && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
+        if (isWakingUp && (MyInput.GetKeyDown(KeyCode.W) || MyInput.GetKeyDown(KeyCode.A) || MyInput.GetKeyDown(KeyCode.S) || MyInput.GetKeyDown(KeyCode.D)))
         {
             StartCoroutine(WakeUpFromBed());
         }
@@ -86,13 +90,13 @@ public class Movement : MonoBehaviour
     private void PlayerMove()
     {
         Vector3 vec3_move = transform.TransformDirection(
-            Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            MyInput.GetAxis("Horizontal"), 0f, MyInput.GetAxis("Vertical"));
 
         // Check that the player is on the ground
         if (PlayerCharacterController.isGrounded)
         {
             // Check if the spacebar is pressed
-            if (Input.GetKey(KeyCode.Space))
+            if (MyInput.GetKey(KeyCode.Space))
             {
                 // Check that at least JUMPDELAY seconds have passed since the last jump
                 if ((Time.realtimeSinceStartup - last_jump_time) > JUMPDELAY)
@@ -107,7 +111,7 @@ public class Movement : MonoBehaviour
             }
 
             // Handle player sprinting
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            if (MyInput.GetKey(KeyCode.LeftShift) || MyInput.GetKey(KeyCode.RightShift))
             {
                 target_speed = SPRINTSPEED;
             }
@@ -146,8 +150,8 @@ public class Movement : MonoBehaviour
     {
         if (canLookAround)
         {
-            pitch_degrees -= Input.GetAxis("Mouse Y") * PITCH_SENS;
-            yaw_degrees += Input.GetAxis("Mouse X") * YAW_SENS;
+            pitch_degrees -= MyInput.GetAxis("Mouse Y") * PITCH_SENS;
+            yaw_degrees += MyInput.GetAxis("Mouse X") * YAW_SENS;
 
             pitch_degrees = Mathf.Clamp(pitch_degrees, -70f, 70f);
 

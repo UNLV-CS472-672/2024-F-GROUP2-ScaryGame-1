@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEditor;
 using JetBrains.Annotations;
+using Moq;
 public class PauseMenuTest
 {
     private TestSceneHelper helper;
@@ -123,6 +124,23 @@ public class PauseMenuTest
         optionsMenu.backButtonSensitivityPanel.onClick.Invoke();
         helper.optionsCanvasGameObj.SetActive(false);
     }
+
+    [UnityTest, Order(2)]
+    public IEnumerator Escape_ActivatesMenu()
+    {
+        Mock<IInput> mockInput = new Mock<IInput>();
+        bool firstCall = true;
+        mockInput.Setup(m => m.GetKeyDown(KeyCode.Escape)).Returns(() =>
+            { if (firstCall) { firstCall = false; return true; } else { return false; } });
+        PauseMenu menu = helper.pauseMenuManagerGameObj.GetComponent<PauseMenu>();
+        menu.MyInput = mockInput.Object;
+        yield return null;
+        Assert.IsTrue(helper.pauseMenuGameObj.activeSelf);
+        firstCall = true;
+        yield return null;
+        Assert.IsFalse(helper.pauseMenuGameObj.activeSelf);
+    }
+
 
     [UnityTest, Order(3)]
     public IEnumerator BackToTitle_LoadsTitle()

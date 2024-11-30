@@ -3,6 +3,8 @@ using NUnit.Framework;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Moq;
+using UnityEngine.Windows;
 
 public class PlayerMovementTest
 {
@@ -23,7 +25,7 @@ public class PlayerMovementTest
         helper.overlayGameObj.SetActive(true);
         yield return null;
     }
-    [UnityTest]
+    [UnityTest, Order(2)]
     public IEnumerator Update_NoMovement()
     {
         Vector3 oldPos = helper.playerGameObj.transform.position;
@@ -31,12 +33,27 @@ public class PlayerMovementTest
         Assert.IsTrue(oldPos.Equals(helper.playerGameObj.transform.position));
     }
 
-    [UnityTest]
+    [UnityTest, Order(2)]
     public IEnumerator Update_NoRotation()
     {
         Vector3 oldRot = helper.playerGameObj.transform.localEulerAngles;
         yield return null;
         Assert.IsTrue(oldRot.Equals(helper.playerGameObj.transform.localEulerAngles));
 
+    }
+
+    [UnityTest, Order(3)]
+    public IEnumerator WakeUp_RestoresRotation()
+    {
+        Mock<IInput> mockInput = new Mock<IInput>();
+        mockInput.Setup(m => m.GetKeyDown(KeyCode.W)).Returns(true);
+        mockInput.Setup(m => m.GetKey(KeyCode.Space)).Returns(true);
+        mockInput.Setup(m => m.GetKey(KeyCode.LeftShift)).Returns(true);
+
+        Movement movement = helper.playerGameObj.GetComponent<Movement>();
+        movement.MyInput = mockInput.Object;
+
+        yield return new WaitForSeconds(2.5f);
+        Assert.IsTrue(helper.playerGameObj.transform.localRotation == Quaternion.Euler(0f, -360f, 360f));
     }
 }

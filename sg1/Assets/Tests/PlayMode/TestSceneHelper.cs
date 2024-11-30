@@ -10,7 +10,11 @@ public class TestSceneHelper : MonoBehaviour
     public GameObject optionsCanvasGameObj; // Inactive, only active when paused and in options
     public GameObject sequenceMinigameCanvasGameObj;
     public GameObject rotatingDialsGameObj;
-    public GameObject healthSliderGameObj; 
+    public GameObject healthSliderGameObj;
+    public GameObject portalGameObj;
+    public GameObject captchaGameObj;
+    public GameObject floorsaltGameObj;
+    public GameObject saltGameObj;
 
     /*
     public void ActivateAll()
