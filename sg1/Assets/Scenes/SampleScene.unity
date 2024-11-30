@@ -3308,7 +3308,11 @@ MonoBehaviour:
   - {fileID: 593880664}
   testing: {fileID: 11400000, guid: 1d77b9fba2532fc4086acde8a28cca6c, type: 2}
   floorsalt_object: {fileID: 592972488}
+  hand_salt: {fileID: 1938972375}
+  hand_health: {fileID: 1938972374}
   Player: {fileID: 1938972373}
+  healthSlider: {fileID: 446605}
+  healthPackStrength: 50
 --- !u!1 &1236820643
 GameObject:
   m_ObjectHideFlags: 0
@@ -6065,6 +6069,16 @@ PrefabInstance:
 --- !u!4 &1938972373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7983923745769611523, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
+  m_PrefabInstance: {fileID: 1938972372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938972374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2585998420969482898, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
+  m_PrefabInstance: {fileID: 1938972372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938972375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 292081001376521263, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
   m_PrefabInstance: {fileID: 1938972372}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1986018548
