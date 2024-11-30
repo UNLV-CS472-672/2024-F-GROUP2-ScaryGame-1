@@ -152,6 +152,17 @@ public class OptionsMenuTitle : MonoBehaviour
         // Hide the main panel
         mainPanel.SetActive(false);
 
+        // Reload the saved volume setting
+        float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        AudioSettingsManager.MasterVolume = savedVolume;
+
+        // Update the slider and input field to reflect the saved volume
+        volumeSlider.value = savedVolume;
+        volumeInputField.text = (savedVolume * 100).ToString("F0");
+
+        // Disable the Apply button (no changes yet)
+        volumeApplyButton.interactable = false;
+
         // Show the volume panel
         volumePanel.SetActive(true);
     }
@@ -335,6 +346,10 @@ public class OptionsMenuTitle : MonoBehaviour
         // Save the master volume to PlayerPrefs
         PlayerPrefs.SetFloat("MasterVolume", AudioSettingsManager.MasterVolume);
         PlayerPrefs.Save();
+
+        // Update UI to reflect the saved value
+        volumeSlider.value = AudioSettingsManager.MasterVolume;
+        volumeInputField.text = (AudioSettingsManager.MasterVolume * 100).ToString("F0");
 
         // Disable the Apply button after saving
         volumeApplyButton.interactable = false;
