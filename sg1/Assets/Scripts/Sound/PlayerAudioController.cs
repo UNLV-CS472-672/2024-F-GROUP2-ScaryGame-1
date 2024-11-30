@@ -11,7 +11,7 @@ public class PlayerAudio : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         // Set initial volume based on master volume
-        audioSource.volume = AudioSettingsManager.MasterVolume;
+        audioSource.volume = AudioSettingsManager.MasterVolume * 1.8f;
 
         // Delay the playback of the audio
         Invoke(nameof(PlayVoiceLine), delayInSeconds);
