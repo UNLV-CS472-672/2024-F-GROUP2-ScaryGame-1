@@ -56,7 +56,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
     private List<int> alien_indexes = new List<int>();
     private List<int> ghost_indexes = new List<int>();
     private List<int> alien_position_indexes = new List<int>();
-    private float fade_seconds = 1.8f;
+    private float fade_seconds = 1.2f;
     bool stop_coroutine = false;
     bool first_exec = true;
 
