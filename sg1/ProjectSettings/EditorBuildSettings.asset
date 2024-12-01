@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndCredits.unity
     guid: 24d9836f1fcae98479001273ef07995c
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: ccd7bcb8b038e9e449d31179b26f4900
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
