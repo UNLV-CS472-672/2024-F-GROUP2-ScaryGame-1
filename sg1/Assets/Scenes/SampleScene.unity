@@ -6102,8 +6102,6 @@ MonoBehaviour:
     _prefab: Assets/Items/Prefabs/floorsalt.obj
   - _gameObject: {fileID: 1554734336}
     _prefab: Assets/Scenes/Prefabs/Antagonist/NewAntagonist.prefab
-  - _gameObject: {fileID: 1198967237}
-    _prefab: Assets/Scenes/Prefabs/Map Core.prefab
   - _gameObject: {fileID: 129393533}
     _prefab: Assets/Scenes/Prefabs/Minigames/MinigameManager.prefab
   - _gameObject: {fileID: 1868486682}

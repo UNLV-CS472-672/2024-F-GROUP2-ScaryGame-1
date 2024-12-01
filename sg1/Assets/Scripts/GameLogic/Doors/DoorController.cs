@@ -43,13 +43,26 @@ public class DoorController : MonoBehaviour
     // Opens the door if it is currently closed or closes the door if it is currently open.
     // This function does nothing if called during an animation. 
     [ContextMenu("toggle door")]
-    public void toggleDoor() {
+    public void toggleDoor()
+    {
         bool closed = animator.GetBool("isClosed");
-        if(inClosedState() && closed || inOpenState() && !closed) {
-            if(!closed) // if it was open, make antagonist wait to reopen
+
+        if (closed)
+        {
+            SoundManager.Instance?.PlayDoorOpenSound(transform.position); // Play open sound
+        }
+        else
+        {
+            SoundManager.Instance?.PlayDoorCloseSound(transform.position); // Play close sound
+        }
+
+        if (inClosedState() && closed || inOpenState() && !closed)
+        {
+            if (!closed) // If it was open, reset the timer
             {
-                closedTimer = 0f;       
+                closedTimer = 0f;
             }
+
             animator.SetBool("isClosed", !closed);
         }
     }
@@ -59,6 +72,7 @@ public class DoorController : MonoBehaviour
     public void openDoor() {
         if (inClosedState() && closedTimer >= closedCooldown)
         {
+            SoundManager.Instance?.PlayDoorOpenSound(transform.position);
             animator.SetBool("isClosed", false);
         }
     }
