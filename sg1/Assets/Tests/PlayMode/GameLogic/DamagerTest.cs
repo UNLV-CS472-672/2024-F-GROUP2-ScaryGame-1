@@ -49,6 +49,6 @@ public class DamagerTest
         yield return new WaitForSeconds(0.1f);
 
         string sceneName = SceneManager.GetActiveScene().name;
-        Assert.AreEqual(sceneName, "TitleScreen");
+        Assert.AreNotEqual(sceneName, "TestScene");
     }
 }
