@@ -9,6 +9,8 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
     public GameObject miniGameCanvas; // Reference to the mini-game Canvas or parent GameObject to deactivate
     public GameObject failCanvas;
     public GameObject successCanvas;
+    public GameObject particleRed;
+    public GameObject particleGreen;
     public Color flashColor = Color.yellow; // Color to flash the buttons
     public float flashDuration = 0.5f; // Duration each button flashes
     public float delayBetweenFlashes = 0.5f; // Delay between each button flash
@@ -114,7 +116,7 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
             StartCoroutine(LoseGame());
         }
     }
-
+    /* I don't think these are used, but I am afraid to delete
     private void CloseMiniGame()
     {
         playerCanInteract = false;
@@ -134,13 +136,15 @@ public class PressTheButtonMinigame : MonoBehaviour, IMiniGame
         miniGameCanvas.SetActive(true);
         StartCoroutine(FlashSequence());
     }
-
+    */
     public void CompleteMiniGame()
     {
         // display win message
         miniGameCanvas.SetActive(false);
         successCanvas.SetActive(true);
         failCanvas.SetActive(false);
+        particleRed.SetActive(false);
+        particleGreen.SetActive(true);
         MinigameManager.instance.MiniGameCompleted();
     }
 

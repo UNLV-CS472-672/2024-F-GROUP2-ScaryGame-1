@@ -182,5 +182,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 10deb7c8288dc7740901a21ed67fc6f9, type: 3}
   minDelay: 10
   maxDelay: 20
-  minVolume: 0.03
-  maxVolume: 0.03
+  minVolume: 0.01
+  maxVolume: 0.01

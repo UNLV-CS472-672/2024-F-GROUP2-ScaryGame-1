@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2714070460408939044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4750822738104909394}
+  - component: {fileID: 634935962209276603}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4750822738104909394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714070460408939044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &634935962209276603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714070460408939044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a21ef72621acc84dba9d285a56d7b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusicSource: {fileID: 0}
+  mainMenuMusic: {fileID: 8300000, guid: d23272f93f0c548638bbec36dbdfa0ff, type: 3}
+  endCreditsMusic: {fileID: 8300000, guid: d23272f93f0c548638bbec36dbdfa0ff, type: 3}
+  saltShakerAudioSource: {fileID: 0}
+  healthpackAudioSource: {fileID: 0}
+  saltShakerClip: {fileID: 8300000, guid: 70fbf995beffdd14e9b2f2077ee1d305, type: 3}
+  healthpackClip: {fileID: 8300000, guid: 1d51a2172d636dd4fa63c925e97cc48e, type: 3}
+  doorOpenAudioSource: {fileID: 0}
+  doorCloseAudioSource: {fileID: 0}
+  doorOpenClip: {fileID: 8300000, guid: dec050c240bb1454ca897b436876a08e, type: 3}
+  doorCloseClip: {fileID: 8300000, guid: dec050c240bb1454ca897b436876a08e, type: 3}

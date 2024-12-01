@@ -142,12 +142,18 @@ public class InventoryManagement : MonoBehaviour
             floorsalt_loc.y = -0.63f;
             GameObject fs = Instantiate(floorsalt_object, floorsalt_loc, Quaternion.identity);
             fs.SetActive(true);
+
+            // Play the salt shaker sound
+            SoundManager.Instance?.PlaySaltShakerSound();
         }
         else if (usedItem.itemName == "Healthpack")
         {
             // Heal the player
             healthSlider.Heal(healthPackStrength);
             Debug.Log($"Healed player for {healthPackStrength}. Current health: {healthSlider.currentHealth}");
+
+            // Play the health pack sound
+            SoundManager.Instance?.PlayHealthpackSound();
         }
 
         // Clear the current prefab if the item is consumed

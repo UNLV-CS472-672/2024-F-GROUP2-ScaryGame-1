@@ -6,6 +6,8 @@ public class MinigameManager : MonoBehaviour
     public static MinigameManager instance;
 
     public GameObject finalObjectToOpen; // The final end goal that will be activated when all minigames have been completed
+    public GameObject portalRedlights;
+    public GameObject portalGreenlights;
     public List<GameObject> miniGameObjects; // List of GameObjects with mini-game components
     private List<IMiniGame> miniGames = new List<IMiniGame>();
 
@@ -63,6 +65,8 @@ public class MinigameManager : MonoBehaviour
     {
         if (finalObjectToOpen == null) return;
         finalObjectToOpen.SetActive(true);
+        portalRedlights.SetActive(false);
+        portalGreenlights.SetActive(true);
         Debug.Log("All mini-games completed! Final object opened.");
     }
 }
