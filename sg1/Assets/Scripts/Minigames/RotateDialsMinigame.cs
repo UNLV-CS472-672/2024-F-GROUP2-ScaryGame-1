@@ -17,6 +17,17 @@ public class RotateDialsMinigame : MonoBehaviour, IMiniGame
         stopButton.onClick.AddListener(() => OnButtonClick());
     }
 
+    void OnEnable()
+    {
+        if(failCanvas.activeSelf)
+        {
+            gameCanvas.SetActive(true);
+            failCanvas.SetActive(false);
+            successCanvas.SetActive(false);
+            gameInProgress = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -74,7 +85,7 @@ public class RotateDialsMinigame : MonoBehaviour, IMiniGame
     }
 
     // Returns true if all dials are in correct rangel
-    bool StopDials()
+    public bool StopDials()
     {
         foreach(DialController dial in dials)
         {

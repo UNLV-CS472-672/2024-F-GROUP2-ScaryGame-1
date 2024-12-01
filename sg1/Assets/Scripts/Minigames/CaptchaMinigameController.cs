@@ -41,7 +41,7 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
                                             "CaptchaSprites/ghost9"};
 
     private GameObject[] o_button = new GameObject[9];
-    private Button[] b_button = new Button[9];
+    internal Button[] b_button = new Button[9];
 
     private int aliens_in_captcha = 0;
     int alien_idx = 0;
