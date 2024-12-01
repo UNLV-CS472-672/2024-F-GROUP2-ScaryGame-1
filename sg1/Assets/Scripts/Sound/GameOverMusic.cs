@@ -11,6 +11,7 @@ public class GameOverMusic : MonoBehaviour
         audioSource.clip = gameOverClip;
         audioSource.loop = true; // Loop the music
         audioSource.playOnAwake = false; // Don't play automatically
+        audioSource.volume = AudioSettingsManager.MasterVolume; // Set volume based on master volume
         AudioSettingsManager.RegisterAudioSource(audioSource);
         audioSource.Play();
     }
