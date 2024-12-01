@@ -40,7 +40,15 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-       
+        if (backgroundMusicSource == null)
+        {
+            backgroundMusicSource = gameObject.AddComponent<AudioSource>();
+            backgroundMusicSource.loop = true; 
+            backgroundMusicSource.playOnAwake = false; 
+            backgroundMusicSource.spatialBlend = 0f; 
+            backgroundMusicSource.volume = AudioSettingsManager.MasterVolume; 
+        }
+
         if (saltShakerAudioSource == null)
         {
             saltShakerAudioSource = gameObject.AddComponent<AudioSource>();
@@ -69,6 +77,24 @@ public class SoundManager : MonoBehaviour
             doorCloseAudioSource.clip = doorCloseClip;
             doorCloseAudioSource.playOnAwake = false;
             doorCloseAudioSource.spatialBlend = 1.0f;
+        }
+    }
+
+    private void Start()
+    {
+        UpdateVolume();
+    }
+
+    private void Update()
+    {
+        UpdateVolume();
+    }
+
+    public void UpdateVolume()
+    {
+        if (backgroundMusicSource != null)
+        {
+            backgroundMusicSource.volume = AudioSettingsManager.MasterVolume;
         }
     }
 

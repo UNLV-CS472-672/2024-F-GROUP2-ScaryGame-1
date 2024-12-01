@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a21ef72621acc84dba9d285a56d7b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundMusicSource: {fileID: 0}
+  mainMenuMusic: {fileID: 8300000, guid: d23272f93f0c548638bbec36dbdfa0ff, type: 3}
+  endCreditsMusic: {fileID: 8300000, guid: d23272f93f0c548638bbec36dbdfa0ff, type: 3}
   saltShakerAudioSource: {fileID: 0}
   healthpackAudioSource: {fileID: 0}
   saltShakerClip: {fileID: 8300000, guid: 70fbf995beffdd14e9b2f2077ee1d305, type: 3}
   healthpackClip: {fileID: 8300000, guid: 1d51a2172d636dd4fa63c925e97cc48e, type: 3}
   doorOpenAudioSource: {fileID: 0}
   doorCloseAudioSource: {fileID: 0}
-  doorOpenClip: {fileID: 8300000, guid: 5f8a88c0b674c3a4b98191f4ed0cafd5, type: 3}
-  doorCloseClip: {fileID: 8300000, guid: 2893f01b6d9d073439e4d3193f1a0d6e, type: 3}
+  doorOpenClip: {fileID: 8300000, guid: dec050c240bb1454ca897b436876a08e, type: 3}
+  doorCloseClip: {fileID: 8300000, guid: dec050c240bb1454ca897b436876a08e, type: 3}
