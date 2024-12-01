@@ -4878,6 +4878,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513787451}
   m_CullTransparentMesh: 1
+--- !u!1001 &1525828903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 634935962209276603, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: doorOpenClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dec050c240bb1454ca897b436876a08e, type: 3}
+    - target: {fileID: 634935962209276603, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: doorCloseClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dec050c240bb1454ca897b436876a08e, type: 3}
+    - target: {fileID: 2714070460408939044, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750822738104909394, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
 --- !u!1 &1535017667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5695,6 +5760,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   empty: 1
   icon: {fileID: 0}
+--- !u!1 &1696044156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2714070460408939044, guid: 9f7972d859fdee34dbb56363a1ab258c, type: 3}
+  m_PrefabInstance: {fileID: 1525828903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1698602805
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,8 +6172,6 @@ MonoBehaviour:
     _prefab: Assets/Items/Prefabs/floorsalt.obj
   - _gameObject: {fileID: 1554734336}
     _prefab: Assets/Scenes/Prefabs/Antagonist/NewAntagonist.prefab
-  - _gameObject: {fileID: 1198967237}
-    _prefab: Assets/Scenes/Prefabs/Map Core.prefab
   - _gameObject: {fileID: 129393533}
     _prefab: Assets/Scenes/Prefabs/Minigames/MinigameManager.prefab
   - _gameObject: {fileID: 1868486682}
@@ -6116,6 +6184,8 @@ MonoBehaviour:
     _prefab: Assets/Scenes/Prefabs/Minigames/Captcha.prefab
   - _gameObject: {fileID: 1198967237}
     _prefab: Assets/Scenes/Prefabs/Map Core.prefab
+  - _gameObject: {fileID: 1696044156}
+    _prefab: Assets/Scenes/Prefabs/Sound/SoundManager.prefab
 --- !u!4 &1802123509
 Transform:
   m_ObjectHideFlags: 11
@@ -7204,3 +7274,4 @@ SceneRoots:
   - {fileID: 757445153}
   - {fileID: 2015770086}
   - {fileID: 6679212165493842084}
+  - {fileID: 1525828903}

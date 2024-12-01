@@ -5,7 +5,7 @@ public class Interactable : MonoBehaviour
     public InventoryItem item; // Reference to the item to be added to the inventory
     public float interactionDistance = 3f; // Distance within which you can interact
 
-    public void Interact()
+    public virtual void Interact()
     {
         InventoryManagement inventoryManager = FindAnyObjectByType<InventoryManagement>();
         if (inventoryManager != null)
