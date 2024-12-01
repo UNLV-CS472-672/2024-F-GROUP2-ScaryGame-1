@@ -53,11 +53,11 @@ public class Damager : MonoBehaviour
             isDamaging = true;
         } 
 
-        // If player runs out of health, load the title scene
+        // If player runs out of health, load the game over screen
         if(healthSlider.currentHealth <= 0)
         {
             Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
