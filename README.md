@@ -2,28 +2,42 @@
 
 
 ## Overview
-Scary Game #1 is a 3D horror game developed in Unity, featuring a machine-learning-powered antagonist that adapts to the player's behavior. The game is designed to keep players on edge, providing an immersive and unpredictable horror experience. As players navigate the map, the AI-driven antagonist learns from player actions, increasing the difficulty and replayability.
+Scary Game #1 is a 3D horror game developed in Unity, featuring a a ghost that chases the player as they navigate the world while completing minigames. After using the help of specific items and strategies, the player can finish all three minigames and exit the world through a portal.
 
 ## Features
-- Dynamic Antagonist: Uses Unity ML-Agents and TensorFlow to evolve based on the player's movements and strategies.
-- Immersive Environment: First-person view with eerie soundscapes and interactive objects.
-- Interactive Objects: Players can interact with doors, traps, and key items to progress through the map.
-- Save/Load System: Save your progress and continue from checkpoints.
-- Real-time UI: Displays player health, collected items, and current objectives.
+- Dynamic Antagonist: Uses pathfinding to chase the player. Has different movement types and effects.
+- Immersive Environment: First-person view with eerie soundscapes, interactive objects, and dynamic world elements.
+- Interactive Objects: Players can interact with doors, items, minigames, and a portal.
+- Pause/Options/Game Over/Credits Scenes: Modify game options, restart, or view credits when the game is over.
+- Real-time UI: Displays player health, map information, collected items, current objectives, tips, and minigame completion.
 
-## Technologies Used
-- Unity
+## Technologies and Software Used
+- Unity Game Engine
 - C#/C/C++
-- ML-Agents
-- Python
+- NuGet, Moq
+- Blender
+- GIMP
 
 ## Requirements
 - Unity 6 or Higher
 - Windows or macOS
 
 ## How to Play
+Controls:
 - Use (W A S D) to move and mouse to look around.
 - Hold Shift to sprint.
 - Press Space to jump.
-- Avoid the antagonist while navigating the map.
-- Interact with objects to unlock new areas and progress through the game.
+- Hold M to view the minimap.
+- Press Left-Click to interact with doors.
+- Press E to interact with a minigame.
+- Press F to pick up an item.
+- Press G to use an item.
+- Press Escape to enter the pause menu.
+
+Objectives:
+- Avoid the antagonist while navigating the world.
+- Interact with doors to evade the ghost.
+- Pick up helpful items, like salt and a health pack.
+- Use items to slow down the ghost or restore health.
+- Play three minigames when given the chance.
+- After finishing the minigames, visit the portal room to make a safe escape and win!
