@@ -8,6 +8,8 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
     public GameObject CaptchaMinigameCanvas;
     public GameObject FailCanvas;
     public GameObject WinCanvas;
+    public GameObject redLight;
+    public GameObject greenLight;
     public GameObject button_verify;
 
     private string[] button_names = {"c_button1",
@@ -202,6 +204,8 @@ public class CaptchaMinigameController : MonoBehaviour, IMiniGame
         CaptchaMinigameCanvas.SetActive(false);
         FailCanvas.SetActive(false);
         WinCanvas.SetActive(true);
+        redLight.SetActive(false);
+        greenLight.SetActive(true);
         CompleteMiniGame();
     }
     

@@ -5673,6 +5673,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1770893880}
   m_SourcePrefab: {fileID: 100100000, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
+--- !u!82 &1377655967 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 234739272289165625, guid: 78f2dc3c7a7be1140a53845efb904b76, type: 3}
+  m_PrefabInstance: {fileID: 1377655966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1411387466
 GameObject:
   m_ObjectHideFlags: 0
@@ -7192,9 +7197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013ccd26d7751374ab0a8df9fdc9f0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSource: {fileID: 0}
-  footstepClips: []
-  stepInterval: 0.5
+  audioSource: {fileID: 1377655967}
+  footstepSounds: []
+  walkStepInterval: 0.5
+  sprintStepInterval: 0.28
+  sprintKey: 304
+  gettingOutOfBedDuration: 3
 --- !u!1 &1786822920
 GameObject:
   m_ObjectHideFlags: 0
