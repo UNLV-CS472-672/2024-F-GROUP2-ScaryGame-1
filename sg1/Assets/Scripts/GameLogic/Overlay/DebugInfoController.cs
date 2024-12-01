@@ -20,6 +20,9 @@ public class DebugInfoController : MonoBehaviour
 
         // refresh FPS calculation every second
         InvokeRepeating("RefreshFPS", 1f, 1f);
+
+        Application.targetFrameRate = 60; // Set the target frame rate to 60 FPS
+        QualitySettings.vSyncCount = 0;   // Disable VSync to allow frame rate limiting to take effect
     }
 
     // Update is called once per frame
