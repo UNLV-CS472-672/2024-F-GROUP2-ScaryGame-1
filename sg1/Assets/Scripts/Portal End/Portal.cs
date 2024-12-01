@@ -5,7 +5,7 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] private string endCreditsSceneName = "EndCredits"; // Name of the end credits scene
 
-    private void OnTriggerEnter(Collider other)
+    internal void OnTriggerEnter(Collider other)
     {
         // Check if the object entering the portal is the player
         if (other.CompareTag("Player"))

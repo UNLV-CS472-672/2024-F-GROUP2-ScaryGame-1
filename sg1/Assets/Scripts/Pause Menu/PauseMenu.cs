@@ -25,6 +25,8 @@ public class PauseMenu : MonoBehaviour
 
     private OptionsMenuTitle optionsMenuTitle; // Reference to the OptionsMenuTitle script
 
+    internal IInput MyInput = new InputWrapper();
+
     void Start()
     {
         // Button listeners
@@ -66,7 +68,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (MyInput.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {
