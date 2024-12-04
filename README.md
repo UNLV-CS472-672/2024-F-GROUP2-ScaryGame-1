@@ -11,6 +11,9 @@ Scary Game #1 is a 3D horror game developed in Unity, featuring a a ghost that c
 - Pause/Options/Game Over/Credits Scenes: Modify game options, restart, or view credits when the game is over.
 - Real-time UI: Displays player health, map information, collected items, current objectives, tips, and minigame completion.
 
+## Video Trailer
+https://github.com/user-attachments/assets/9f5dd955-c8d9-4f01-9abe-eb39e20762df
+
 ## Technologies and Software Used
 - Unity Game Engine
 - C#/C/C++
